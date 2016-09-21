@@ -1,0 +1,81 @@
+body{
+	/*width:1000px;	cne*/
+	width:100%;
+	margin:0 auto;
+	font:62.5% "Trebuchet MS",sans-serif;
+}
+
+#header{height:80px;font-size:1.3em;}
+
+#cont_btn{height:27px;border-bottom:0 none;}
+#btn{float:left;width:820px;font-size:1.3em;}
+#btn li{float:left;text-align:center;}
+#btn li a{padding: 3px 30px;display:block;}
+
+#salir{float:right;display:block;padding:5px 20px;}
+
+/*#cont{height:600px;font-size:1.3em;font-weight:normal} cne*/
+#cont{height:100%;font-size:1.3em;font-weight:normal}
+#cont_articulos{height:962px;font-size:1.3em;font-weight:normal}
+#cont_abm{width:480px;padding:0 0 0 30px;float:left;}
+#cont_abm_variantes{width:960px;padding:0 0 0 30px;float:left;}
+#cont_abm p, #cont_lista p, #cont_abm_variantes p{color:#E17009;font-weight: bold; margin: 20px 0px 10px; font-size: 1.3em;}
+
+input.ingreso, select.ingreso{width:250px;}
+textarea.ingreso{width:250px;height:70px;}
+
+
+/*ESTILOS PARA LAS LISTAS DEL ABM*/
+#cont_lista{/*width:355px;*/min-width:355px;padding:0 0 0 20px;float:left;}
+ul.lista{padding: 0;margin: 0;list-style:none;height:500px;overflow:auto;}
+ul.lista li{padding:3px 0 3px 0;border-bottom:1px #A6C9E2 solid;}
+.cont_item{width:auto;float:left;padding:4px 0 0 0;}
+.editar{float:right;width:auto;padding:2px; margin:0 5px 0 0;}
+
+
+/*ESCTILOS PARA LAS LISTAS DE LAS PROPIEDADES*/
+ul.fields{padding:0;marging:0;list-style:none;width:400px;}
+ul.fields li{display:block;width:133px;float:left; padding:0 0px 0 0;}
+
+/*ESTILOS PARA LA TABLA DE VARIANTES*/
+table.variantes{margin:30px 0 0 0;}
+table.variantes td{border:1px solid #A6C9E2;padding:4px 7px;}
+table.variantes input.field{width:80px;}
+
+.medidas{width:60px;}
+
+.cont_all_colores{height:335px;overflow:auto;}
+.cerrar_colores{padding:10px 0 0 0;cursor:pointer;}
+
+#colorPopUp{cursor:pointer;}
+
+#color_list_popUp{width:260px;margin:0px;padding:0px;list-style:none;float:left;}
+#color_list_popUp li, #color_list_popUp2 li{width:130px;float:left;margin:5px 0;border-bottom:1px solid #E4E4E4;}
+#color_list_popUp2{width:130px;margin:0px;padding:0px;list-style:none;float:left;}
+
+#cont_colores img{margin:3px 5px;border:1px solid #eee;}
+
+#color_list{margin:0px;padding:0px;list-style:none;}
+#color_list li{float:left;margin:0 4px 0 0;}
+
+.image_list{list-style:none;margin:0px;padding:0;}
+.image_list li{height:70px;float:left;border:1px solid #ccc; margin:0 5px 0 0;}
+.image_list li img{float:left;margin:0 5px 0 0;height: 70px;}
+.image_list .borrar{float:left;}
+
+.descripcion{width:320px;height:102px;}
+
+ul.subcategorias{margin:0px;padding:0px;list-style:none;width:400px;height:400px;overflow:auto;}
+
+.cont_precio{height:auto !important;}
+
+.preciosDelos{padding:3px 10px;float:left;margin-right:15px;}
+table.precios{width:500px;margin: 10px 0 10px 0;clear:left;}
+table.precios td{padding:3px 5px;border:1px solid gray;border-bottom:none;}
+table.precios .subcat{background:black;color:#FFF;font-weight: bold;}
+table.precios .marcas{background:#ccc;color:#000;}
+table.precios .field_precio{width:50px;}
+
+.listas{/*width:460px !important;*/min-width:460px !important;}
+
+.marcas_seccion{height:680px !important;}

@@ -1,0 +1,226 @@
+<?php
+
+class ListaPrecios extends controller{
+	
+	function ListaPrecios(){
+		parent :: Controller();	
+		$header['title'] = 'Panel de control - Listas';
+		
+		$token = $this->uri->segment(3);
+	}
+	
+	function cargarLista($token){
+		if($token != ''){
+			$data['style'] = 'css/front.css';
+			$data['all'] = $this->_getAll($token);
+			$this->load->view('listaPrecios', $data);
+		}else{
+			redirect('/', 'location');	
+		}
+	}
+	
+	function _getAll($token){
+		$query = $this->db->query("select * from listas where token='".$token."'");
+		$result = $query->result();
+
+		//if(isset($result[0]->brand)){
+			$brand = $result[0]->brand;
+		//}else{
+		//	redirect('/', 'location');
+		//}
+		$lista_id = $result[0]->listas_id;
+		$nombre = $result[0]->nombre;
+		//if(!$brand){
+			//$cat = $this->db->query("select * from categorias where delos=1 order by categoria ASC");
+			$cat = $this->db->query("select * from categorias where categoria like '%Registradores%' order by categoria ASC");
+		//}else{
+			//$cat = $this->db->query("select * from categorias where vetas=1 order by categoria ASC");	
+		//}
+		$all = array();
+		
+		foreach($cat->result() as $category){
+			$all[] = array(
+						   'id' => $category->id,
+						   'category' => $category->categoria
+						   );
+		}
+
+		$cat = $this->db->query("select * from categorias where categoria not like '%Registradores%' order by categoria ASC");
+		foreach($cat->result() as $category){
+			$all[] = array(
+						   'id' => $category->id,
+						   'category' => $category->categoria
+						   );
+		}
+		
+		/*if(!$brand){
+			$query = $this->db->query("select * from subcategorias where delos=1 order by subcategoria ASC");
+		}else{
+			$query = $this->db->query("select * from subcategorias where vetas=1 order by subcategoria ASC");	
+		}
+		
+		foreach($query->result() as $sub){
+			$all[] = array(
+								'id_sub' => $sub->id_sub,
+								'title_sub' => $sub->subcategoria
+								);	
+		}*/
+		
+		for($x = 0; $x < count($all); $x++){
+			/*
+			if(!$brand){
+				$query = $this->db->query("select * from subcategorias where id_cat=".$all[$x]['id']." and delos=1 order by subcategoria ASC");
+			}else{
+				$query = $this->db->query("select * from subcategorias where id_cat=".$all[$x]['id']." and vetas=1 order by subcategoria ASC");	
+			}*/
+			$query = $this->db->query("select * from subcategorias where id_cat=".$all[$x]['id']." order by subcategoria ASC");
+			$subs = array();
+			foreach($query->result() as $sub){
+				$subs[] = array(
+								   'id_sub' => $sub->id_sub,
+								   'title_sub' => $sub->subcategoria
+								   );
+			}
+			
+			$all[$x]['subcategories'] = $subs;
+			
+			for($y = 0; $y < count($all[$x]['subcategories']); $y++){
+				//echo $all[$x]['subcategories'][$y]['title_sub']."<br>";	
+				//$query3 = $this->db->query("select distinct idMarca, id_restrict from restrict_sub where idSubcat=".$all[$x]['subcategories'][$y]['id_sub']." and brand=$brand");
+				$query3 = $this->db->query("select distinct idMarca, id_restrict from restrict_sub where idSubcat=".$all[$x]['subcategories'][$y]['id_sub']);
+				$r = $query3->result();
+				
+				$restrict = array();
+				/*
+				if(isset($r[0]->idMarca)){
+					foreach($r as $marca){
+						$restrict[] = $marca->idMarca;
+					}
+				}else{
+					$restrict = 0;	
+				}
+				*/
+				$sql = "select distinct a.marcaId, m.marca from articulos a, marcas m where subcatId=".$all[$x]['subcategories'][$y]['id_sub']." and a.marcaId=m.id";
+				for($i = 0; $i<count($restrict); $i++){
+					if(isset($restrict[$i])){
+						$sql.= " and m.id!=$restrict[$i]";
+					}
+				}
+				$sql.= " order by m.marca ASC";
+				
+				$marcas = array();
+			
+				$query = $this->db->query($sql);
+				foreach($query->result() as $marca){
+					$marcas[] = array(
+									'id' => $marca->marcaId,
+									'title' => $marca->marca
+									);
+				}
+				
+				for($i=0; $i<count($marcas); $i++){
+					//$query = $this->db->query("select a.* from articulos a where subcatId=".$all[$x]['subcategories'][$y]['id_sub']." and marcaId=".$marcas[$i]['id']." order by nombre ASC");	
+					$query = $this->db->query("select a.*,b.precio precio_lista from articulos a, listas_precios b where subcatId=".$all[$x]['subcategories'][$y]['id_sub']." and marcaId=".$marcas[$i]['id']." and a.art_id = b.art_id and b.listas_id = ".$lista_id." order by codigo ASC");					
+					foreach($query->result() as $row){
+						$query2 = $this->db->query("select c.color, c.color_img from art_color ac, colores c where ac.artId=".$row->art_id." and ac.colorId=c.color_id");
+						$color = array();
+						foreach($query2->result() as $result){
+							$color[] = array(
+											'color' => $result->color,
+											'color_img' => $result->color_img
+										);
+						}
+						$marcas[$i][]=array(
+									'art_id' => $row->art_id,
+									'nombre' => $row->nombre,
+									'codigo' => $row->codigo,
+									'description' => $row->description,
+									'alto' => $row->alto,
+									'formato' => $row->formato,
+									'embalaje' => $row->embalaje,
+									'largo' => $row->largo,
+									'prof' => $row->prof,
+									'precio' => $row->precio_lista,
+									'color' => $color
+								);
+					}
+				}
+				
+				$all[$x]['subcategories'][$y][] = $marcas;
+				
+			}
+		}		
+		//var_dump($all);
+		
+		
+		/*for($x = 0; $x<count($all); $x++){
+			//echo $all[$x]['id_sub'];
+			$query3 = $this->db->query("select distinct idMarca, id_restrict from restrict_sub where idSubcat=".$all[$x]['id_sub']." and brand=$brand");
+			$r = $query3->result();
+	
+			$restrict = array();
+			if(isset($r[0]->idMarca)){
+				foreach($r as $marca){
+					$restrict[] = $marca->idMarca;
+				}
+			}else{
+				$restrict = 0;	
+			}
+			$sql = "select distinct a.marcaId, m.marca from articulos a, marcas m where subcatId=".$all[$x]['id_sub']." and a.marcaId=m.id";
+			for($i = 0; $i<count($restrict); $i++){
+				if(isset($restrict[$i])){
+					$sql.= " and m.id!=$restrict[$i]";
+				}
+			}
+			$sql.= " order by m.marca ASC";
+			
+			$marcas = array();
+			
+			$query = $this->db->query($sql);
+			foreach($query->result() as $marca){
+				$marcas[] = array(
+								'id' => $marca->marcaId,
+								'title' => $marca->marca
+								);
+			}
+			
+			for($i=0; $i<count($marcas); $i++){
+			$query = $this->db->query("select a.* from articulos a where subcatId=".$all[$x]['id_sub']." and marcaId=".$marcas[$i]['id']." order by art_id ASC");	
+			
+			foreach($query->result() as $row){
+					$query2 = $this->db->query("select c.color, c.color_img from art_color ac, colores c where ac.artId=".$row->art_id." and ac.colorId=c.color_id");
+					$color = array();
+					foreach($query2->result() as $result){
+						$color[] = array(
+										'color' => $result->color,
+										'color_img' => $result->color_img
+									);
+					}
+					$marcas[$i][]=array(
+								'art_id' => $row->art_id,
+								'nombre' => $row->nombre,
+								'codigo' => $row->codigo,
+								'description' => $row->description,
+								'alto' => $row->alto,
+								'largo' => $row->largo,
+								'prof' => $row->prof,
+								'formato' => $row->formato,
+								'embalaje' => $row->embalaje,
+								'precio' => $row->precio,
+								'color' => $color
+							);
+				}
+			}
+			
+			$all[$x][] = $marcas;
+			
+		}*/
+		
+		$all['brand'] = $brand;
+		$all['nombre'] = $nombre;
+		return $all;
+	}
+	
+}
+
+?>

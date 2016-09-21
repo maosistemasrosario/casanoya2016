@@ -1,0 +1,23 @@
+<?php
+
+class Welcome extends Controller {
+
+	function Welcome()
+	{
+		parent::Controller();
+		$this->load->model("botonera");
+		$header['title'] = 'DeLos Vetas';
+		$header['style'] = 'css/home.css';
+		$this->load->view('header', $header);
+	}
+	
+	function index()
+	{
+		$data['deLos'] = $this->botonera->cargarBtnDelos();
+		$data['vetas'] = $this->botonera->cargarBtnVetas();
+		$this->load->view('home', $data);
+	}
+	
+}
+
+?>

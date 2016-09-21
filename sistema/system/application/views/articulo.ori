@@ -1,0 +1,267 @@
+<?php
+	//echo $marcas[1]['title'];
+	//var_dump($marcas);
+	/*var_dump($marcas[0][1]);
+	echo $marcas[1]['title'];
+	echo $marcas[1][0]['img'];*/
+?>
+<script type="text/javascript">
+$(function(){
+	//$("#vetas").css({opacity:0.8});
+	//$("#delos").css({opacity:0.8});
+	//$("#subcat").css({opacity:1});
+	//$("#cat").css({opacity:1});
+});
+
+$(function(){
+	setTimeout(long, 1000);	   
+	
+});
+
+function long(){
+	var alto = $(".cont_img").height();
+	var height = (alto+20+15+53+20)-20;
+	//alert("height: "+height);
+	//alert("col height: "+$(".col_right").height());
+	if(height > $(".col_right").height()){
+		$(".col_right").css("height", height);
+	}
+}
+
+function changeImg(l){
+	var source = jQuery(l).find('img').attr('src');
+	var cortar = source.split("_thumb");
+	$(".cont_img").html("<a href='"+cortar[0]+cortar[1]+"' target='_blank'><img src='"+cortar[0]+"_big"+cortar[1]+"' /></a>");
+	
+}
+</script>
+<!--<div id="home" class="content">-->
+    <ul id="delos" class="btn-categorias" style="display:none;">
+    	<li class="destacado delos">
+        	<a class="destacados2" href="<?php echo base_url().'index.php/destacados/0'; ?>">DESTACADOS</a>
+        </li>
+    <?php
+		//var_dump($deLos);
+		for($i = 0; $i<count($deLos); $i++){
+			echo "<li>";
+				echo "<a id='cat' href='javascript:void(0)'>".$deLos[$i]['categoria']."</a>";
+				echo "<ul id='subcat' class='btn-subCategorias'>";
+					for($s=0; $s<(count($deLos[$i])-1); $s++){
+						echo "<li>";
+						
+							echo "<a href='".base_url()."index.php/categorias/".$deLos[$i][$s]['id_sub']."/0'>".$deLos[$i][$s]['sub']."</a>";
+						
+						echo "</li>";
+					}
+				echo "</ul>";
+			echo "</li>";
+		}
+		
+	?>
+    </ul>
+    <ul id="vetas" class="btn-categorias" style="display:none;">
+    	<li class="destacado vetas2">
+        	<a class="destacados2" href="<?php echo base_url().'index.php/destacados/1'; ?>">DESTACADOS</a>
+        </li>
+    <?php
+		for($i = 0; $i<count($vetas); $i++){
+			echo "<li>";
+				echo "<a id='cat' href='javascript:void(0)'>".$vetas[$i]['categoria']."</a>";
+				echo "<ul id='subcat' class='btn-subCategorias'>";
+					for($s=0; $s<(count($vetas[$i])-1); $s++){
+						echo "<li>";
+						
+							echo "<a href='".base_url()."index.php/categorias/".$vetas[$i][$s]['id_sub']."/1'>".$vetas[$i][$s]['sub']."</a>";
+							
+						echo "</li>";
+					}
+				echo "</ul>";
+			echo "</li>";
+		}
+		
+	?>
+    </ul>
+    <div class="color clearfix">
+    	<div class="logo"></div>
+        <div class="cont_art clearfix">
+        	<div class="left_arrow">
+            	<?php
+					if($art['prev'] != ''){
+						echo "<a title='Anterior articulo' href='". base_url() ."index.php/articulo/".$art['prev']."/".$art['brand']."'></a>";
+					}
+				?>
+            <div class="right_arrow">
+            	<?php
+					if($art['next'] != ''){
+						echo "<a title='Siguiente articulo' href='". base_url() ."index.php/articulo/".$art['next']."/".$art['brand']."'></a>";
+					}
+				?>            		
+            </div>
+            </div>
+        	<div class="col_left">
+            	<div class="cont_img">
+                	<?php
+						if(isset($art['img'])){
+							$img = $art['img'][0];
+							$div=explode("_thumb",$img);
+							echo "<a href='".base_url().$div[0].$div[1]."' target='_blank'><img src='".base_url().$div[0]."_big".$div[1]."' /></a>";
+						}else{
+							echo "<img src='".base_url()."/images/sin-imagen_big.jpg' />";
+						}
+					?>
+                	
+                </div>
+                <ul class="thumbs clearfix">
+                	<?php
+						if(isset($art['img'])){
+							for($i=0; $i<count($art['img']); $i++){
+								$img = $art['img'][$i];
+								$div=explode("_thumb",$img);
+								if($i != count($art['img'])-1){
+									echo "<li><a href='javascript:void(0)' onclick='changeImg(this)'><img src='". base_url().$art['img'][$i] ."' /><img src='".base_url().$div[0]."_big".$div[1]."' style='display:none;' /></a></li>";	
+								}else{
+									echo "<li class='last'><a href='javascript:void(0)' onclick='changeImg(this)'><img src='". base_url().$art['img'][$i] ."' /><img src='".base_url().$div[0]."_big".$div[1]."' style='display:none;' /></a></a></li>";		
+								}
+							}
+						}else{?>
+							<li><a href='javascript:void(0)'><img src='<?php echo base_url() ?>images/sin-imagen_thumb.jpg' /></a></li>
+                            <li><a href='javascript:void(0)'><img src='<?php echo base_url() ?>images/sin-imagen_thumb.jpg' /></a></li>
+                            <li><a href='javascript:void(0)'><img src='<?php echo base_url() ?>images/sin-imagen_thumb.jpg' /></a></li>
+                            <li class='last'><a href='javascript:void(0)'><img src='<?php echo base_url() ?>images/sin-imagen_thumb.jpg' /></a></li>	
+                    <?php
+						}
+					?>
+                </ul>
+            </div>
+            <div class="col_right">
+            	<?php
+				if($art['logo'] != ''){
+            		echo "<div class='nombre'>";
+						echo "<img src='".base_url().$art['logo']."' />";	
+                	echo "</div>";
+				}
+				?>
+            	<div class="nombre">
+                	<?php
+						echo $art['nombre'];
+					?>
+                </div>
+                <div class="descrip">
+                	<span class="title">Descripci&oacute;n</span><br>
+					<?php
+						echo $art['descrip'];
+					?>
+                </div>
+                <div class="line"></div>
+                <div class="codigo">
+                	<span class="title">C&oacute;digo</span><br>
+					<?php
+						echo $art['codigo'];
+					?>
+                </div>
+                <div class="colores">
+                	<span class="title">Color</span><br>
+					<ul class="list_colores">
+                    	<?php
+							if(isset($art['colores'])){
+								for($i=0; $i<count($art['colores']); $i++){
+									echo "<li class='clearfix'><img src='". base_url().$art['colores'][$i]['color_img']."' /><div class='color_name'>".$art['codigo']."-".$art['colores'][$i]['color']."</div></li>";		
+								}
+							}
+						?>
+                    </ul>
+                </div>
+                <br style="clear:both" />
+                <div class="line"></div>
+                <div class="alto">
+                	<span class="title">Alto</span><br>
+					<?php
+						echo $art['alto']." cm";
+					?>
+                </div>
+                <div class="alto">
+                	<span class="title">Largo</span><br>
+					<?php
+						echo $art['largo']." cm";
+					?>
+                </div>
+                <div class="alto">
+                	<span class="title">Prof.</span><br>
+					<?php
+						echo $art['prof']." cm";
+					?>
+                </div>
+                <div class="line"></div>
+                <div class="alto">
+                	<span class="title">Cajas</span><br>
+					<?php
+						echo $art['volumen'];
+					?>
+                </div>
+                <div class="alto">
+                	<span class="title">Peso</span><br>
+					<?php
+						echo $art['peso']." kg";
+					?>
+                </div>
+                <?php 
+					if($art['planos'] != ''){
+						echo "<a href='".base_url().$art['planos']."' target='_blank' class='plano'></a>";			
+					}
+				?>
+            </div>
+        </div>
+    </div>
+<!--    
+    <br style="clear:left" />
+    <div id="bottom">
+    	<div class="logo_bottom">
+        	<?php
+				$brand = $this->uri->segment(3);
+				$link = '';
+				if($brand == 0){
+					$link = base_url()."index.php/destacados/1";
+				}else{
+					$link = base_url()."index.php/destacados/0";
+				}
+			?>
+        	<a href="<?php echo $link; ?>"></a>
+        </div>
+    	<p>
+        	Pueyrredon 150 &middot; 2000 Rosario &middot; Santa Fe. Argentina &middot; +54 0341 438 66 05
+            <i>info@delos-vetas.com.ar</i> &middot; <strong>www.delos-vetas.com.ar</strong>
+        </p>
+    </div>
+</div>
+<a href="http://www.imagining4u.com/" target="_blank" id="imagining"></a>
+-->
+</td>
+<td style="background-image:url(<?php echo base_url()."images/bg.png";?>); background-repeat:repeat-x;"></td>
+</tr>
+<tr><td colspan="3">
+    <div align="center" id="bottom">
+    	<table align="center" width="897px" border="0" cellpadding="0" cellspacing="0" style="width:897px;">
+        <tr>
+        	<td width="20%" align="right" valign="middle">
+            <input type="text" id="botnewslet" value="Para info inserte su mail"/>
+            </td>
+        	<td width="10%" align="center" valign="middle">
+            <div id="botnewsenv" onclick="EnviaMail(document.getElementById('botnewslet').value);" style="cursor:pointer; outline:none;">ENVIAR</div>
+            </td>
+        	<td width="5%" align="center" valign="middle">
+            <div id="botnewssep"></div>
+            </td>            
+        	<td width="65%" valign="middle">
+                <p>
+                    Pueyrredon 150 &middot; +54 0341 438 66 05<br />
+                    2000 &middot; Rosario &middot; Santa Fe. Argentina 
+                </p>
+			</td>
+            </tr>
+        </table>
+    </div>
+</td></tr>   
+</table>
+
+</body>
+</html>

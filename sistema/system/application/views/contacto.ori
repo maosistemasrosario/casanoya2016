@@ -1,0 +1,218 @@
+<script type="text/javascript">
+$(function(){
+	//$("#vetas").css({opacity:0.8});
+	//$("#delos").css({opacity:0.8});
+	//$("#subcat").css({opacity:1});
+	//$("#cat").css({opacity:1});
+});
+</script>
+	
+<!--<div id="home" class="content">-->
+	<!--<div class="prop"></div>-->
+    <ul id="delos" class="btn-categorias" style="display:none;">
+    	<li class="destacado delos">
+        	<a class="destacados2" href="<?php echo base_url().'index.php/destacados/0'; ?>">DESTACADOS</a>
+        </li>
+    <?php
+		//var_dump($deLos);
+		for($i = 0; $i<count($deLos); $i++){
+			echo "<li>";
+				echo "<a id='cat' href='javascript:void(0)'>".$deLos[$i]['categoria']."</a>";
+				echo "<ul id='subcat' class='btn-subCategorias'>";
+					for($s=0; $s<(count($deLos[$i])-1); $s++){
+						echo "<li>";
+						
+							echo "<a href='".base_url()."index.php/categorias/".$deLos[$i][$s]['id_sub']."/0'>".$deLos[$i][$s]['sub']."</a>";
+						
+						echo "</li>";
+					}
+				echo "</ul>";
+			echo "</li>";
+		}
+		
+	?>
+    </ul>
+    <ul id="vetas" class="btn-categorias" style="display:none;">
+    	<li class="destacado vetas2">
+        	<a class="destacados2" href="<?php echo base_url().'index.php/destacados/1'; ?>">DESTACADOS</a>
+        </li>
+    <?php
+		for($i = 0; $i<count($vetas); $i++){
+			echo "<li>";
+				echo "<a id='cat' href='javascript:void(0)'>".$vetas[$i]['categoria']."</a>";
+				echo "<ul id='subcat' class='btn-subCategorias'>";
+					for($s=0; $s<(count($vetas[$i])-1); $s++){
+						echo "<li>";
+						
+							echo "<a href='".base_url()."index.php/categorias/".$vetas[$i][$s]['id_sub']."/1'>".$vetas[$i][$s]['sub']."</a>";
+						
+						echo "</li>";
+					}
+				echo "</ul>";
+			echo "</li>";
+		}
+		
+	?>
+    </ul>
+	<!--
+    <div class="cont_logos clearfix">
+    	<div class="delos_contacto"></div>
+        <div class="vetas_contacto"></div>
+        <br style="clear:left" />
+        <br /><br /><br /><br />-->
+<table style="background-color:#EDEDEE;" align="center" width="100%" border="0">
+<tr><td colspan="2"><br /></td></tr>
+<tr><td align="center" valign="top" width="40%">
+        <iframe width="275" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=argentina,+rosario,+Pueyrredon+150&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=49.176833,113.466797&amp;ie=UTF8&amp;hq=&amp;hnear=Pueyrred%C3%B3n+150,+Alberto+Olmedo,+Rosario,+Santa+Fe,+Argentina&amp;z=14&amp;ll=-32.935361,-60.655633&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=argentina,+rosario,+Pueyrredon+150&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=49.176833,113.466797&amp;ie=UTF8&amp;hq=&amp;hnear=Pueyrred%C3%B3n+150,+Alberto+Olmedo,+Rosario,+Santa+Fe,+Argentina&amp;z=14&amp;ll=-32.935361,-60.655633" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
+</td><td align="center" valign="top" width="60%">
+    <!--</div>
+    <div class="cont_form">-->
+    	<?php echo form_open('contacto/send'); ?>
+    	<table width="80%" class="form" cellpadding="0" cellspacing="0" border="0">
+        	<tr>
+            	<td colspan="2" class="name">NOMBRE Y APELLIDO(*)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><input type="text" name="nombre" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2" class="name">EMPRESA(*)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><input type="text" name="empresa" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2" class="name">E-MAIL(*)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2" class="name">TEL&Eacute;FONO(*)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><input type="text" name="telefono" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2" class="name">DIRECCI&Oacute;N</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><input type="text" name="direccion" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2" class="name">CUIT</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><input type="text" name="cuit" /></td>
+            </tr>
+            <tr>
+	            <td colspan="2">
+                <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td class="name">LOCALIDAD (*)</td>
+                    <td>&nbsp;&nbsp;</td>
+                	<td class="name">PROVINCIA</td>
+            	</tr>
+                <tr>
+                    <td class="field2"><input type="text" name="localidad" /></td>
+                    <td>&nbsp;&nbsp;</td>
+                    <td class="field2"><input type="text" name="provincia" /></td>
+                </tr>
+                </table>
+                </td>
+            </tr>
+            <tr>
+	            <td colspan="2">
+                <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td class="name">PA&Iacute;S</td>
+                    <td>&nbsp;&nbsp;</td>
+                	<td class="name">C&Oacute;DIGO POSTAL</td>
+            	</tr>
+                <tr>
+                    <td class="field3"><input type="text" name="pais" /></td>
+                    <td>&nbsp;&nbsp;</td>
+                    <td class="field4"><input type="text" name="codigo" /></td>
+                </tr>
+                </table>
+                </td>
+            </tr>
+            <tr>
+            	<td class="name">CONSULTAR A</td>
+            </tr>            	
+                <td class="field">
+                	<select name="consulta">
+                    	<option value="">SELECCIONE...</option>
+                        <option value="DeLos">DELOS</option>
+                        <option value="Vetas">VETAS</option>
+                	</select>
+                 </td>
+            </tr>
+            <tr>
+            	<td colspan="2" class="name">MENSAJE:</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="field"><textarea name="mensaje"></textarea></td>
+            </tr>
+            <tr>
+            	<td class="name"></td>
+                <td class="field">
+                	<div class="obligatorios">
+                    	* Campos obligatorios<br />
+                        <?php if(isset($obligatorio) && $obligatorio){ ?>
+                        	<span class="obli">Los campos con asterisco (*) son obligatorios.</span>
+                        <?php } ?>
+                        <?php if(isset($enviado) && $enviado){ ?>
+                        	<span class="obli">La consulta se ha enviado con exito, <br />
+							muchas gracias.</span>
+                        <?php } ?>
+                    </div>
+                	<input type="submit" name="enviar" value="" class="enviar" />
+                </td>
+            </tr>
+        </table>
+        </form>
+</td></tr>
+</table>
+    <!--
+    </div>
+    <br style="clear:left" />
+    <div id="bottom">
+    	<p>
+        	Pueyrredon 150 &middot; 2000 Rosario &middot; Santa Fe. Argentina &middot; +54 0341 438 66 05
+            <i>info@delos-vetas.com.ar</i> &middot; <strong>www.delos-vetas.com.ar</strong>
+        </p>
+    </div>
+</div>    
+<a href="http://www.imagining4u.com/" target="_blank" id="imagining"></a>-->
+
+</td>
+<td style="background-image:url(<?php echo base_url()."images/bg.png";?>); background-repeat:repeat-x;"></td>
+</tr>
+<tr><td colspan="3">
+    <div align="center" id="bottom">
+    	<table align="center" width="897px" border="0" cellpadding="0" cellspacing="0" style="width:897px;">
+        <tr>
+        	<td width="20%" align="right" valign="middle">
+            <input type="text" id="botnewslet" value="Para info inserte su mail"/>
+            </td>
+        	<td width="10%" align="center" valign="middle">
+            <div id="botnewsenv" onclick="EnviaMail(document.getElementById('botnewslet').value);" style="cursor:pointer; outline:none;">ENVIAR</div>
+            </td>
+        	<td width="5%" align="center" valign="middle">
+            <div id="botnewssep"></div>
+            </td>            
+        	<td width="65%" valign="middle">
+                <p>
+                    Pueyrredon 150 &middot; +54 0341 438 66 05<br />
+                    2000 &middot; Rosario &middot; Santa Fe. Argentina 
+                </p>
+			</td>
+            </tr>
+        </table>
+    </div>
+</td></tr>   
+</table>
+
+</body>
+</html>

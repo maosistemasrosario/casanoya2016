@@ -1,0 +1,61 @@
+<body>
+	<header id="header-home">
+		<div id="logo" ><a href="#"/></div>
+	</header >
+	<nav>
+		<ul>
+			<li><a href="<?php echo base_url() ?>index.php">EMPRESA</a>
+			<li><a id="a-producto" href="javascript:mostrarProductos()">PRODUCTOS</a>
+			<li><a id="a-novedades" target="_blank" href="http://cartopel.com.ar/novedades/">NOVEDADES</a>
+			<li><a id="a-contacto" href="<?php echo base_url() ?>index.php/contacto">CONTACTO</a>
+		</ul>
+	</nav>
+	<div id="the-pel"></div>
+	<aside>
+		<ul id="menu_productos" >
+			<?php
+		                for($i = 0; $i<count($categorias); $i++){
+			                echo "<li id='opcion_producto' class='categoria'>";
+			                if (count($categorias[$i])-1==1) {
+				                echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][0]['id_sub']."/0'>".$categorias[$i]['categoria']."</a>";
+			                } else {
+					        echo "<a id='cat' href='javascript:void(0)'>".$categorias[$i]['categoria']."</a>";
+					        echo "<ul id='menu_subproductos'>";
+					        for($s=0; $s<(count($categorias[$i])-1); $s++){
+						        echo "<li id='opcion_subproducto'>";
+						
+							        echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][$s]['id_sub']."/0'>".$categorias[$i][$s]['sub']."</a>";
+						
+						        echo "</li>";
+					        }
+					        echo "</ul>";
+			                }
+			                echo "</li>";
+		                }
+		
+	                ?>
+		</ul>
+	</aside>           
+	<section>
+		<article id="carpeta"></article>
+		<article>
+			<br/>
+			<p>CARTOPEL S.R.L. es una empresa de origen familiar situada en la ciudad de Rosario que desde 1980 se dedica a la fabricación de carpetas y distribución de un amplio surtido de artículos de librería escolar, comercial y de oficina.</p>
+			<p>Hoy, con más de 30 años de trayectoria en el mercado, abastecemos de nuestros productos a mayoristas y negocios de librería de todo el País.</p>
+			<p>Tenemos como misión distribuir nuestros productos logrando satisfacción y conformidad en nuestros clientes, brindándoles la mejor atención y eficiencia tanto en la entrega como en la calidad y precio de nuestros artículos.</p>
+		</article>
+	</section>
+	
+	<footer>
+		<div id="footer-logo">
+		</div>
+		<address>
+				Garay 3524 |2000| Rosario - Prov. Santa Fe - Argentina <br>
+				Tel: 54 |0341| 433 <!--stop skype -->26 53 / 525 15 67 - 0800 888 4373 <br>
+				<a href="mailto:cartopel@arnetbiz.com.ar">cartopel@arnetbiz.com.ar</a>
+		</address>
+		<div id="footer-telefono">
+			<p>433 <!--stop skype -->26 53</p>
+		</div>
+	</footer>
+</body>

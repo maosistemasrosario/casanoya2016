@@ -1,0 +1,9 @@
+/*.color{background:transparent url(../images/background_vetas.png) repeat-y;}*/
+.color{ background-color:#FFFFFF}
+/*.logo{background:transparent url(../images/logo-vetas.jpg) no-repeat;}*/
+#bottom .logo_bottom{background:transparent url(../images/logo-delos-bottom.png) no-repeat;}
+
+.cont_list table.precios .subcat{background:#AB2B2F;}
+
+/*.destacados{background:transparent url(../images/prod_destacados_vetas.jpg) bottom right no-repeat;}*/
+.destacados{background:transparent url(../images/prod_destacados_vetas2.jpg) bottom right no-repeat;margin-left: -70px;}
