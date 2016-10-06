@@ -13,7 +13,7 @@
 */
 //$config['base_url']	= "http://www.imagining4u.com/delos";
 
-$config['base_url']	= "http://localhost:8081/casanoya2016/sistema/";
+$config['base_url']	= "http://localhost/casanoya2016/sistema/";
 
 //$config['base_url']	= "http://www.cartopel.com.ar/sistema/";
 
