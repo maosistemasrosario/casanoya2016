@@ -76,16 +76,16 @@ class botonera extends Model{
         }
 		
 		function cargarProductosDestacados() {
-			$query = $this->db->query("select a.art_id, a.nombre, s.subcategoria, lp.precio from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id inner join subcategorias as s on s.id_sub=a.subcatId where a.destacado = 1 and l.isDefault=1 order by a.nombre");
+			$query = $this->db->query("select a.art_id, a.nombre, s.subcategoria, lp.precio, m.marca from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id inner join subcategorias as s on s.id_sub=a.subcatId inner join marcas as m on m.id = a.marcaId where a.destacado = 1 and l.isDefault=1 order by a.nombre");
 			$btn = array();
 			foreach($query->result() as $q=>$art){
 				$id = $art->art_id;
 				$query_img = $this->db->query("select destacado from img where artId = ".$id." order by img_id ASC limit 1");
 				$result = $query_img->result();
 				if (count($result)>0) {
-					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'imagen' => $result[0]->destacado);
+					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => $result[0]->destacado);
 				} else {
-					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'imagen' => '');
+					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => '');
 				}
 			}
 			return $btn;
