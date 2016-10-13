@@ -15,7 +15,7 @@
 	<header>
 		<div id="header-container">
 			<a href="<?php echo base_url() ?>"><img id="logo" src="<?php echo base_url() ?>/images/logo.png"></img></a>
-			<div id="menu"><a href="#" onclick="abrirMenu();">CATEGORÍAS <span class="pointer">><span></a></div>
+			<div id="menu"><a href="#" onclick="abrirMenu();">CATEGORÍAS <span class="pointer"><span></a></div>
 			<ul id="menu-nivel-1">
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
