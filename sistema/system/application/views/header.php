@@ -93,9 +93,14 @@ function abrirMenu() {
 		$(".pointer").html("v");
 	} else {
 		$("#menu-nivel-1").css("display","none");
-		$(".pointer").html(">")
+		$(".pointer").html(">");
 	}
-	
 }
+
+$(function(){
+	$('#menu-nivel-1').mouseout(function(){
+		abrirMenu();  
+	});
+});
 </script>
 </head>
