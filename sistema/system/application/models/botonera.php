@@ -80,10 +80,10 @@ class botonera extends Model{
 			$btn = array();
 			foreach($query->result() as $q=>$art){
 				$id = $art->art_id;
-				$query_img = $this->db->query("select destacado from img where artId = ".$id." order by img_id ASC limit 1");
+				$query_img = $this->db->query("select big from img where artId = ".$id." order by img_id ASC limit 1");
 				$result = $query_img->result();
 				if (count($result)>0) {
-					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => $result[0]->destacado);
+					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => $result[0]->big);
 				} else {
 					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => '');
 				}

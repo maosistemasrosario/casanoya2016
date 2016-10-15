@@ -56,10 +56,10 @@ class Categorias extends Controller{
 			$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=".$id." and marcaId=".$marcas[$i]['id']." and l.isDefault=1 order by nombre ASC, art_id ASC");	
 			
 			foreach($query->result() as $row){
-				$query2 = $this->db->query("select sample from img where artId=".$row->art_id." order by img_id ASC limit 1");
+				$query2 = $this->db->query("select big from img where artId=".$row->art_id." order by img_id ASC limit 1");
 				$img = $query2->result();
-				if(isset($img[0]->sample)){
-					$img = $img[0]->sample;
+				if(isset($img[0]->big)){
+					$img = $img[0]->big;
 				}else{
 					$img = '';	
 				}
