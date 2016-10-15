@@ -103,22 +103,33 @@ class botonera extends Model{
 
         function cargarSubCategorias(){
 		
-		$query = $this->db->query("select * from categorias order by categoria ASC");
-		$btn = array();
-		foreach($query->result() as $q=>$cat){
-			$categoria = strtolower($cat->categoria);
-			$btn[] =array('categoria' => $categoria);
-			$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." order by subcategoria ASC");
-			
+			$query = $this->db->query("select * from categorias order by categoria ASC");
+			$btn = array();
+			foreach($query->result() as $q=>$cat){
+				$categoria = strtolower($cat->categoria);
+				$btn[] =array('categoria' => $categoria);
+				$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." order by subcategoria ASC");
+				
+				foreach($querySub->result() as $k=>$sub){
+					$btn[$q][] = array(
+									'sub' => strtolower($sub->subcategoria),
+									'id_sub' => $sub->id_sub
+									);
+				}
+			}
+			return $btn;
+		}
+		
+		function getSubCategoria($id){
+			$querySub = $this->db->query("select * from subcategorias where id_sub=".$id." order by subcategoria ASC");
 			foreach($querySub->result() as $k=>$sub){
-				$btn[$q][] = array(
-								'sub' => strtolower($sub->subcategoria),
-								'id_sub' => $sub->id_sub
+				$btn[] = array(
+								'title' => strtolower($sub->subcategoria),
+								'id' => $sub->id_sub
 								);
 			}
+			return $btn;
 		}
-		return $btn;
-	}
     
 }
 
