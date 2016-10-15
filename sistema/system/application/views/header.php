@@ -98,7 +98,7 @@ function abrirMenu() {
 }
 
 $(function(){
-	$('#menu-nivel-1').mouseout(function(){
+	$('#menu-nivel-1').mouseleave(function(){
 		abrirMenu();  
 	});
 });

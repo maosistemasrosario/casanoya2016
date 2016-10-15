@@ -20,12 +20,12 @@
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
 					if (count($categorias[$i])-1>0) {
-						echo "<li id='opcion_producto' class='categoria' onmouseout='return false'>";
+						echo "<li id='opcion_producto' class='categoria' onmouseout='return false' onmouseover='return false'>";
 						//if (count($categorias[$i])-1==1) {
 						//	echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][0]['id_sub']."/0'>".$categorias[$i]['categoria']."</a>";
 						//} else {
 						echo "<a id='cat' href='javascript:void(0)'>".$categorias[$i]['categoria']."</a>";
-						echo "<ul id='menu-nivel-2' onmouseover='abrirMenu();'>";
+						echo "<ul id='menu-nivel-2'>";
 						for($s=0; $s<(count($categorias[$i])-1); $s++){
 							echo "<li id='opcion_subproducto' onmouseout='return false'>";
 					
