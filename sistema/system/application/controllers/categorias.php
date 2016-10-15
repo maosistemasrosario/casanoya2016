@@ -53,7 +53,7 @@ class Categorias extends Controller{
 		$art = array();
 		
 		for($i=0; $i<count($marcas); $i++){
-			$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id where subcatId=".$id." and marcaId=".$marcas[$i]['id']." and l.isDefault=1 order by nombre ASC, art_id ASC");	
+			$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=".$id." and marcaId=".$marcas[$i]['id']." and l.isDefault=1 order by nombre ASC, art_id ASC");	
 			
 			foreach($query->result() as $row){
 				$query2 = $this->db->query("select sample from img where artId=".$row->art_id." order by img_id ASC limit 1");
@@ -68,6 +68,7 @@ class Categorias extends Controller{
 							'nombre' => $row->nombre,
 							'codigo' => $row->codigo,
 							'precio' => $row->precio,
+							'marca'  => $row->marca,
 							'img' => $img
 						);
 			}

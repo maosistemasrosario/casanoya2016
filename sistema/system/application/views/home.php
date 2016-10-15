@@ -104,8 +104,9 @@
 				?>
 				<div class="productos-cell col-md-<?php echo $cant_col ?> col-xs-12 col-sm-<?php echo $col_sm ?>" style="">
 					<table class="table-producto">
+						<tr><td style="min-height: 40px;height: 40px;"></td></tr>
 						<tr style="background-color: white;">
-							<td style="min-height: 150px;height: 150px;">
+							<td style="min-height: 230px;height: 230px;">
 								<a href="<?php echo base_url()?>index.php/articulo/<?php echo $productos[$j]['id']; ?>/0"><img src="<?php echo base_url() ?><?php echo $productos[$j]['imagen']; ?>"></img></a>
 							</td>
 						</tr>
@@ -118,6 +119,7 @@
 						<tr class="table-producto-precio">
 							<td><p><span>$ <?php echo number_format ( $productos[$j]['precio'] , 0, ",", "." ); ?></span></p></td>
 						</tr>
+						<tr><td style="min-height: 40px;height: 40px;"></td></tr>
 					</table>
 				</div>
 				<?php

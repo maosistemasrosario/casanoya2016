@@ -63,17 +63,22 @@
 							for($e=0; $e<count($marcas[$i])-2; $e++){
 								echo "<div class='productos-cell col-md-3 col-xs-12 col-sm-6' style=''>";
 									echo "<table class='table-producto'>";
-										echo "<tr class='table-producto-descripcion'>";
-											echo "<td><p>".$marcas[$i][$e]['nombre']."</p></td>";
-										echo "</tr>";
+										echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
 										echo "<tr style='background-color: white;'>";
-											echo "<td style='min-height: 150px;height: 150px;'>";
+											echo "<td style='min-height: 230px;height: 230px;'>";
 												echo "<a href='".base_url()."index.php/articulo/".$marcas[$i][$e]['art_id']."/".$this->uri->segment(3)."'><img src='".base_url().$marcas[$i][$e]['img'] ."'/></a>";
 											echo "</td>";
 										echo "</tr>";
-										echo "<tr class='table-producto-precio'>";
-											echo "<td><p>$ ".$marcas[$i][$e]['precio']."</p></td>";
+										echo "<tr class='table-producto-titulo'>";
+											echo "<td><p>".$marcas[$i][$e]['marca']."</p></td>";
 										echo "</tr>";
+										echo "<tr class='table-producto-descripcion'>";
+											echo "<td><p>".$marcas[$i][$e]['nombre']."</p></td>";
+										echo "</tr>";
+										echo "<tr class='table-producto-precio'>";
+											echo "<td><p><span>$ ".number_format ( $marcas[$i][$e]['precio'] , 0, ",", "." )."</span></p></td>";
+										echo "</tr>";
+										echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
 									echo "</table>";
 								echo "</div>";
 							}

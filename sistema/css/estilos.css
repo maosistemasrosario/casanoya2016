@@ -260,8 +260,8 @@ header:before
 #productos-container
 {
 	display: table;
-	width: 70%;
-	margin-left: 15%;
+	width: 80%;
+	margin-left: 10%;
 }
 .productos-row
 {
@@ -270,13 +270,14 @@ header:before
 .productos-cell
 {
 	display: table-cell;
-	width: 20%;
-	height: 280px;
+	width: 22%;
+	height: 460px;
+	padding-right: 20px;
 }
 .table-producto
 {
 	border: 1px;
-	width: 150px;
+	width: 230px;
 	margin: 0 auto;
 	text-align: left;
 	border: 2px solid #D3D3D3;
@@ -288,8 +289,8 @@ header:before
 }
 .table-producto img
 {
-	width: 150px;
-	max-height: 150px;
+	width: 230px;
+	max-height: 230px;
 }
 .table-producto-titulo
 {
@@ -322,7 +323,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', end
 .table-producto-precio p
 {
 	/*font-family:Frutiger-Black;*/
-	font-size: 1.5em;
+	font-size: 2em;
 	text-align:center;
 	line-height: 30px;
 	margin: 0;
@@ -366,8 +367,8 @@ ul.btn-categorias li.vetas2 a.destacados2:hover{}
 *+html .color{padding:0 0 60px 0;}
 .logo{width:198px;height:66px;float:left;margin:29px 0 0 50px;}
 * html .logo{margin:29px 0 0 61px;}
-.categorias{width: 70%;margin-left: 15%;}
-.categorias .title{width:100%;padding:3px 10px 3px;color:#FFF;font-family:Frutiger-Black; margin:0 auto; text-align:left}
+.categorias{width: 80%;margin-left: 10%;}
+.categorias .title{width:100%;padding:3px 10px 3px;color:#FFF;background-color:rgba(207,7,4,0.9);border: 1px solid #444;font-family:Frutiger-Black; margin:0 auto; text-align:left}
 .categorias .articulos{padding:10px 0;}
 .categorias ul.art{margin:0 auto;clear:left;padding: 0;}
 .categorias ul.art li{float:left;margin:0 10px;list-style:none;}
