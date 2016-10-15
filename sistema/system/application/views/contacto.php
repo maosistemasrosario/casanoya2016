@@ -3,19 +3,19 @@
 	<header>
 		<div id="header-container">
 			<a href="<?php echo base_url() ?>"><img id="logo" src="<?php echo base_url() ?>/images/logo.png"></img></a>
-			<div id="menu"><a href="#" onclick="abrirMenu();">CATEGORÍAS <span class="pointer">><span></a></div>
+			<div id="menu"><a href="#" onmouseover="abrirMenu();">CATEGORÍAS </a></div>
 			<ul id="menu-nivel-1">
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
 					if (count($categorias[$i])-1>0) {
-						echo "<li id='opcion_producto' class='categoria'>";
+						echo "<li id='opcion_producto' class='categoria' onmouseout='return false' onmouseover='return false'>";
 						//if (count($categorias[$i])-1==1) {
 						//	echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][0]['id_sub']."/0'>".$categorias[$i]['categoria']."</a>";
 						//} else {
 						echo "<a id='cat' href='javascript:void(0)'>".$categorias[$i]['categoria']."</a>";
 						echo "<ul id='menu-nivel-2'>";
 						for($s=0; $s<(count($categorias[$i])-1); $s++){
-							echo "<li id='opcion_subproducto'>";
+							echo "<li id='opcion_subproducto' onmouseout='return false'>";
 					
 								echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][$s]['id_sub']."/0'>".$categorias[$i][$s]['sub']."</a>";
 					
