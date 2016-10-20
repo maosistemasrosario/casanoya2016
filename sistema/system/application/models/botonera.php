@@ -80,10 +80,10 @@ class botonera extends Model{
 			$btn = array();
 			foreach($query->result() as $q=>$art){
 				$id = $art->art_id;
-				$query_img = $this->db->query("select destacado from img where artId = ".$id." order by img_id ASC limit 1");
+				$query_img = $this->db->query("select big from img where artId = ".$id." order by img_id ASC limit 1");
 				$result = $query_img->result();
 				if (count($result)>0) {
-					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => $result[0]->destacado);
+					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => $result[0]->big);
 				} else {
 					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'marca' => $art->marca, 'imagen' => '');
 				}
@@ -103,22 +103,33 @@ class botonera extends Model{
 
         function cargarSubCategorias(){
 		
-		$query = $this->db->query("select * from categorias order by categoria ASC");
-		$btn = array();
-		foreach($query->result() as $q=>$cat){
-			$categoria = strtolower($cat->categoria);
-			$btn[] =array('categoria' => $categoria);
-			$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." order by subcategoria ASC");
-			
+			$query = $this->db->query("select * from categorias order by categoria ASC");
+			$btn = array();
+			foreach($query->result() as $q=>$cat){
+				$categoria = strtolower($cat->categoria);
+				$btn[] =array('categoria' => $categoria);
+				$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." order by subcategoria ASC");
+				
+				foreach($querySub->result() as $k=>$sub){
+					$btn[$q][] = array(
+									'sub' => strtolower($sub->subcategoria),
+									'id_sub' => $sub->id_sub
+									);
+				}
+			}
+			return $btn;
+		}
+		
+		function getSubCategoria($id){
+			$querySub = $this->db->query("select * from subcategorias where id_sub=".$id." order by subcategoria ASC");
 			foreach($querySub->result() as $k=>$sub){
-				$btn[$q][] = array(
-								'sub' => strtolower($sub->subcategoria),
-								'id_sub' => $sub->id_sub
+				$btn[] = array(
+								'title' => strtolower($sub->subcategoria),
+								'id' => $sub->id_sub
 								);
 			}
+			return $btn;
 		}
-		return $btn;
-	}
     
 }
 

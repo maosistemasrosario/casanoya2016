@@ -57,6 +57,19 @@
 				echo "<div class='categorias'>";
 					echo "<div class='title table-producto-titulo'>";
 						echo strtoupper($marcas[$i]['title']);
+						echo "<select name='ordenarPor' onchange='ordenarPor(this.value)'>";
+							if ($order==0) {
+								echo "<option value='0' selected='selected'>Marca </option>";
+							} else {
+								echo "<option value='0'>Marca </option>";
+							}
+							if ($order==1) {
+								echo "<option value='1' selected='selected'>Precio </option>";
+							} else {
+								echo "<option value='1' >Precio </option>";
+							}
+						echo "</select>";
+						echo "<label>Ordenar por:</label>";
 					echo "</div>";
 					echo "<div class='articulos container-fluid'>";
 						echo "<ul class='art clearfix row'>";
@@ -133,6 +146,9 @@
 		var diff = windowHeight - bottomFooter;
 		if (diff>0) {
 			$("footer").css("position","absolute");
+		}
+		function ordenarPor(marca) {
+			window.location = "<?php echo base_url().'index.php/categorias/'.$id.'/'.$brand.'/'?>"+marca;
 		}
 	</script>
 </body>
