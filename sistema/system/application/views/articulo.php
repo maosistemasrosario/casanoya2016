@@ -142,17 +142,14 @@ function changeImg(l){
                 	echo "</div>";
 				}*/
 				?>
-
-            	<div class="nombre" style="width:250px;line-height:25px;">
+				
+				<div class="title">
                 	<?php
-						echo $art['nombre'];
+						echo $art['marca'];
 					?>
                 </div>
                 <table> 
                 <tr>
-                <td style="padding: 0px 10px 0px 0px;">
-                         <span class="title">C&oacute;digo</span>       
-                </td>
                 <td>
                          <div class="codigo">
 					<?php
@@ -161,53 +158,39 @@ function changeImg(l){
                          </div>       
                 </td>
                 </tr>
-                <tr>
-                <td colspan="2"><div class="line"></div></td>
-                </tr>
-                <tr>
-                <td style="padding: 10px 10px 10px 0px;">
-                         <span class="title">Descripci&oacute;n</span>       
-                </td>
-                <td>
-                         <div class="descrip" style="width:250px">
-                	 		<?php
-						echo $art['descrip'];
-					?>
-                	 </div>       
-                </td>
-                </tr>
 				<tr>
-                <td colspan="2"><div class="line"></div></td>
-                </tr>
-                <tr>
-				<td style="padding: 10px 10px 10px 0px;">
-					<span class="title">Marca</span>
-				</td>
-				<td>
-					<div class="descrip">
+				<td style="font-weight: bold;">
+					<div class="marca">
                 	 	<?php
-							echo $art['marca'];
+							echo $art['nombre'];
 						?>
                 	</div>  
 				</td>
 				</tr>
                 <tr>
-                <td colspan="2"><div class="line"></div></td>
+                <td>
+                    <div class="precio">
+                	 		$<?php
+							 echo number_format ( $art['precio'] , 0, ",", "." ); ?>	    
+                	</div>       
+                </td>
+                </tr>
+				<tr>
+                <td colspan="2"><div class="line" style="margin-top: 10px;"></div></td>
                 </tr>
                 <tr>
-                <td style="padding: 0px 10px 0px 0px;">
-                         <span class="title">Precio $</span>       
+                <td style="padding: 10px 10px 10px 0px;">
+                         <span class="descrip_Title">Descripci&oacute;n</span>       
                 </td>
+				</tr>
+				<tr>
                 <td>
-                         <div class="precio">
+                         <div class="descrip" style="width:240px">
                 	 		<?php
-						echo $art['precio'];
+						echo $art['descrip'];
 					?>
                 	 </div>       
                 </td>
-                </tr>
-                <tr>
-                <td colspan="2"><div class="line"></div></td>
                 </tr>
 				</table>
                 

@@ -401,11 +401,13 @@ ul.btn-categorias li.vetas2 a.destacados2:hover{}
 
 /*.cont_art .col_right{float:right;width:173px;background:white;padding:10px;font-family:Arial, Helvetica, sans-serif;  }*/
 .cont_art .col_right{float:right;padding:10px; text-align:left;}
-.cont_art .col_right .title{font-size:12px;font-weight:bold;color:black;}
+.cont_art .col_right .title{font-size:18px;font-weight:bold;color:#4169E1;margin:0;}
 /*.cont_art .col_right .nombre{font-size:16px;font-weight:bold;color:#b42822;margin:8px 0;border-bottom:1px solid #000;;padding-bottom:5px;}*/
 .cont_art .col_right .nombre{font-size:2em;font-weight:bold;color:black;margin:8px 0;padding-bottom:5px;display:inline-table;text-align:center;width: 100%;font-family: Frutiger-Black;}
-.cont_art .col_right .descrip{font-size:12px;margin:8px 0;    color: black;}
-.cont_art .col_right .precio{font-size:12px;margin:8px 0;    color: black;}
+.cont_art .col_right .descrip{font-size:12px;margin:5px 0;    color: black;}
+.cont_art .col_right .descrip_Title{font-weight:bold;font-size:14px;margin:5px 0;    color: black;}
+.cont_art .col_right .precio{height: 40px;font-size: 1.5em;text-align:center;line-height: 30px;margin: 0;color: red;font-weight: bold;border: 2px solid #4169E1;padding-top: 3px;padding-bottom: 3px;padding-left: 10px;padding-right: 10px;margin-top: 3%;width:100px}
+/*.cont_art .col_right .precio{font-size:12px;margin:8px 0;    color: black;}*/
 .cont_art .col_right .codigo{font-size:12px;margin:8px 0;float:left;width:63px;    color: black;}
 .cont_art .col_right .colores{font-size:12px;margin:8px 0;float:left;width:110px;    color: black;}
 .cont_art .col_right .colores ul.list_colores{display: inline;}
