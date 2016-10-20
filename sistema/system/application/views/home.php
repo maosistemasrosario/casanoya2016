@@ -46,7 +46,7 @@
 				<li><a href="<?php echo base_url().'index.php/contacto'?>">Contacto</a></li>
 				<li><a href="http://casanoyasrl.com.ar/novedades/" target="_blank">Promociones</a></li>
 				<li><a href="<?php echo base_url().'index.php/empresa'?>">Empresa</a></li>
-			<ul>
+			</ul>
 		</div>
 		
 	</header>
