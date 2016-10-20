@@ -172,7 +172,8 @@ function changeImg(l){
                     <div class="precio">
                 	 		$<?php
 							 echo number_format ( $art['precio'] , 0, ",", "." ); ?>	    
-                	</div>       
+                	</div>
+					<!--<p><span>$ <?php echo number_format ( $art['precio'] , 0, ",", "." ); ?></span></p>-->
                 </td>
                 </tr>
 				<tr>
