@@ -3,19 +3,19 @@
 	<header>
 		<div id="header-container">
 			<a href="<?php echo base_url() ?>"><img id="logo" src="<?php echo base_url() ?>/images/logo.png"></img></a>
-			<div id="menu"><a href="#" onclick="abrirMenu();">CATEGORÍAS <span class="pointer">><span></a></div>
+			<div id="menu"><a href="#" onmouseover="abrirMenu();">CATEGORÍAS </a></div>
 			<ul id="menu-nivel-1">
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
 					if (count($categorias[$i])-1>0) {
-						echo "<li id='opcion_producto' class='categoria'>";
+						echo "<li id='opcion_producto' class='categoria' onmouseout='return false' onmouseover='return false'>";
 						//if (count($categorias[$i])-1==1) {
 						//	echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][0]['id_sub']."/0'>".$categorias[$i]['categoria']."</a>";
 						//} else {
 						echo "<a id='cat' href='javascript:void(0)'>".$categorias[$i]['categoria']."</a>";
 						echo "<ul id='menu-nivel-2'>";
 						for($s=0; $s<(count($categorias[$i])-1); $s++){
-							echo "<li id='opcion_subproducto'>";
+							echo "<li id='opcion_subproducto' onmouseout='return false'>";
 					
 								echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][$s]['id_sub']."/0'>".$categorias[$i][$s]['sub']."</a>";
 					
@@ -57,23 +57,41 @@
 				echo "<div class='categorias'>";
 					echo "<div class='title table-producto-titulo'>";
 						echo strtoupper($marcas[$i]['title']);
+						echo "<select name='ordenarPor' onchange='ordenarPor(this.value)'>";
+							if ($order==0) {
+								echo "<option value='0' selected='selected'>Marca </option>";
+							} else {
+								echo "<option value='0'>Marca </option>";
+							}
+							if ($order==1) {
+								echo "<option value='1' selected='selected'>Precio </option>";
+							} else {
+								echo "<option value='1' >Precio </option>";
+							}
+						echo "</select>";
+						echo "<label>Ordenar por:</label>";
 					echo "</div>";
 					echo "<div class='articulos container-fluid'>";
 						echo "<ul class='art clearfix row'>";
 							for($e=0; $e<count($marcas[$i])-2; $e++){
 								echo "<div class='productos-cell col-md-3 col-xs-12 col-sm-6' style=''>";
 									echo "<table class='table-producto'>";
-										echo "<tr class='table-producto-descripcion'>";
-											echo "<td><p>".$marcas[$i][$e]['nombre']."</p></td>";
-										echo "</tr>";
+										echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
 										echo "<tr style='background-color: white;'>";
-											echo "<td style='min-height: 150px;height: 150px;'>";
+											echo "<td style='min-height: 230px;height: 230px;'>";
 												echo "<a href='".base_url()."index.php/articulo/".$marcas[$i][$e]['art_id']."/".$this->uri->segment(3)."'><img src='".base_url().$marcas[$i][$e]['img'] ."'/></a>";
 											echo "</td>";
 										echo "</tr>";
-										echo "<tr class='table-producto-precio'>";
-											echo "<td><p>$ ".$marcas[$i][$e]['precio']."</p></td>";
+										echo "<tr class='table-producto-titulo'>";
+											echo "<td><p>".$marcas[$i][$e]['marca']."</p></td>";
 										echo "</tr>";
+										echo "<tr class='table-producto-descripcion'>";
+											echo "<td><p>".$marcas[$i][$e]['nombre']."</p></td>";
+										echo "</tr>";
+										echo "<tr class='table-producto-precio'>";
+											echo "<td><p><span>$ ".number_format ( $marcas[$i][$e]['precio'] , 0, ",", "." )."</span></p></td>";
+										echo "</tr>";
+										echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
 									echo "</table>";
 								echo "</div>";
 							}
@@ -128,6 +146,9 @@
 		var diff = windowHeight - bottomFooter;
 		if (diff>0) {
 			$("footer").css("position","absolute");
+		}
+		function ordenarPor(marca) {
+			window.location = "<?php echo base_url().'index.php/categorias/'.$id.'/'.$brand.'/'?>"+marca;
 		}
 	</script>
 </body>

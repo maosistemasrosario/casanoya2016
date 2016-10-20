@@ -15,19 +15,19 @@
 	<header>
 		<div id="header-container">
 			<a href="<?php echo base_url() ?>"><img id="logo" src="<?php echo base_url() ?>/images/logo.png"></img></a>
-			<div id="menu"><a href="#" onclick="abrirMenu();">CATEGORÍAS <span class="pointer">><span></a></div>
-			<ul id="menu-nivel-1">
+			<div id="menu"><a href="#"  onmouseover="abrirMenu();">CATEGORÍAS </a></div>
+			<ul id="menu-nivel-1" ;>
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
 					if (count($categorias[$i])-1>0) {
-						echo "<li id='opcion_producto' class='categoria'>";
+						echo "<li id='opcion_producto' class='categoria' onmouseout='return false' onmouseover='return false'>";
 						//if (count($categorias[$i])-1==1) {
 						//	echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][0]['id_sub']."/0'>".$categorias[$i]['categoria']."</a>";
 						//} else {
 						echo "<a id='cat' href='javascript:void(0)'>".$categorias[$i]['categoria']."</a>";
 						echo "<ul id='menu-nivel-2'>";
 						for($s=0; $s<(count($categorias[$i])-1); $s++){
-							echo "<li id='opcion_subproducto'>";
+							echo "<li id='opcion_subproducto' onmouseout='return false'>";
 					
 								echo "<a href='".base_url()."index.php/categorias/".$categorias[$i][$s]['id_sub']."/0'>".$categorias[$i][$s]['sub']."</a>";
 					
@@ -104,20 +104,22 @@
 				?>
 				<div class="productos-cell col-md-<?php echo $cant_col ?> col-xs-12 col-sm-<?php echo $col_sm ?>" style="">
 					<table class="table-producto">
+						<tr><td style="min-height: 40px;height: 40px;"></td></tr>
+						<tr style="background-color: white;">
+							<td style="min-height: 230px;height: 230px;">
+								<a href="<?php echo base_url()?>index.php/articulo/<?php echo $productos[$j]['id']; ?>/0"><img src="<?php echo base_url() ?><?php echo $productos[$j]['imagen']; ?>"></img></a>
+							</td>
+						</tr>
 						<tr class="table-producto-titulo">
-							<td><p><?php echo $productos[$j]['subcategoria']; ?></p></td>
+							<td><p><?php echo $productos[$j]['marca']; ?></p></td>
 						</tr>
 						<tr class="table-producto-descripcion">
 							<td><p><?php echo $productos[$j]['nombre']; ?></p></td>
 						</tr>
-						<tr style="background-color: white;">
-							<td style="min-height: 150px;height: 150px;">
-								<a href="<?php echo base_url()?>index.php/articulo/<?php echo $productos[$j]['id']; ?>/0"><img src="<?php echo base_url() ?><?php echo $productos[$j]['imagen']; ?>"></img></a>
-							</td>
-						</tr>
 						<tr class="table-producto-precio">
-							<td><p>$ <?php echo $productos[$j]['precio']; ?></p></td>
+							<td><p><span>$ <?php echo number_format ( $productos[$j]['precio'] , 0, ",", "." ); ?></span></p></td>
 						</tr>
+						<tr><td style="min-height: 40px;height: 40px;"></td></tr>
 					</table>
 				</div>
 				<?php
