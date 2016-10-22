@@ -81,8 +81,7 @@ function changeImg(l){
 		
 	</header>           
 	<section  id="section-producto">
-
-
+	<div id="url-ubicacion"><ul class='url-ubicacion ul a'><a href="<?php echo base_url() ?>">Home</a> - <a href="#"><?php echo $art['nombre'];?></a></ul></div>
     <div class="clearfix">
     	<div class="cont_art clearfix">
         	<div class="left_arrow">
