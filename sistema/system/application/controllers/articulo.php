@@ -22,7 +22,7 @@ class Articulo extends Controller{
 		$this->load->view('header', $header);
 		
 		$art = array();
-		$query = $this->db->query("select a.*, m.marca, m.id, m.logo, lp.precio from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, marcas m where a.art_id=".$id." and a.marcaId=m.id and l.isDefault=1 ");
+		$query = $this->db->query("select a.*, m.marca, m.id, m.logo, lp.precio, s.subcategoria, c.categoria from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join subcategorias s on s.id_sub = a.subcatId left join categorias c on c.id=a.catId, marcas m where a.art_id=".$id." and a.marcaId=m.id and l.isDefault=1 ");
 		$result = $query->result();
 		$art = array(
 					'art_id' => $result[0]->art_id,
@@ -39,7 +39,10 @@ class Articulo extends Controller{
 					'marca' => $result[0]->marca,
 					'marca_id' => $result[0]->id,
 					'brand' => $brand,
+					'subcategoria' => $result[0]->subcategoria, 
 					'subcat_id' => $result[0]->subcatId, 
+					'categoria' => $result[0]->categoria, 
+					'cat_id' => $result[0]->catId, 
 					'next' => '',
 					'prev' => '',
 					'formato' => $result[0]->formato,

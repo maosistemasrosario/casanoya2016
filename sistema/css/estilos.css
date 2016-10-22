@@ -54,6 +54,7 @@ header
 	/*background-color: red;*/
 	margin:0;
 	padding:0;
+	margin-bottom: 20px;
 }
 header:before
 {
@@ -63,7 +64,7 @@ header:before
 {
     z-index: 200;
     position: absolute;
-	box-shadow: 0px 0px 15px #000000;
+	/*box-shadow: 0px 0px 15px #000000;*/
 }
 #menu
 {
@@ -73,6 +74,7 @@ header:before
 	margin-left:initial;
 	top: 20px;				*/
 	margin: 0;
+	margin-left: 10%;
 	width: 10%;
 	height: 20px;	
 	border: 1px solid rgba(207,7,4,0.9);
@@ -87,6 +89,7 @@ header:before
 	text-decoration: none;
 	color: white;
 	font-family: Frutiger-Black;
+	padding-left: 10px;
 }
 #menu a span
 {
@@ -102,6 +105,7 @@ header:before
 	box-shadow: 0px 0px 20px #FFFFFF;
 	display: none;
 	width: 230px;
+	margin-left: 10%;
 }
 #menu-nivel-1 li
 {
@@ -154,8 +158,8 @@ header:before
 }
 #header-container
 {
-	width: 70%;
-	margin-left: 15%;
+	width: 80%;
+	margin-left: 10%;
 	height: 80px;
 	/*border: 1px solid #444;*/
 }
@@ -175,7 +179,7 @@ header:before
 {
 	padding-right: 5%;
 	padding-left: 5%;
-	margin-right: 15%;
+	margin-right: 10%;
 	float: right;
 	height: 40px;
 	background-color: rgba(207,7,4,0.9);
@@ -195,18 +199,12 @@ header:before
 	font-weight: bold;
 }
 
-#navbar2
+#menu-container
 {
-	position: absolute;
-	top: 85px;
-	margin: 0;
-	z-index: 0;
+	height: 30px;
 	width: 100%;
-	height: 20px;
-	border: 1px solid rgba(51, 14, 99, 0.9);
-	/*background-color: rgba(207,7,4,0.9);*/
+	background-color: blue;
 }
-
 
 .active-li a
 {
@@ -226,9 +224,9 @@ header:before
 #ofertas
 {
 	width: 100%;
-	/*height: 300px;*/
+	/*height: 300px;
 	border-top: 4px solid red;
-	border-bottom: 4px solid red;
+	border-bottom: 4px solid red;*/
 	margin-top: 5px;
 	text-align:center;
 	/*background-color: rgba(207,7,4,0.9);*/

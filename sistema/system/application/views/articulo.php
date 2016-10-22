@@ -187,7 +187,7 @@ function changeImg(l){
                 <td>
                          <div class="descrip" style="width:240px">
                 	 		<?php
-						echo $art['descrip'];
+						echo nl2br($art['descrip']);
 					?>
                 	 </div>       
                 </td>
