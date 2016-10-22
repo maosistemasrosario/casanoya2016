@@ -1,10 +1,20 @@
 <body>
 	<div class="container-fluid">
-	<header>
+<header>
 		<div id="header-container">
 			<a href="<?php echo base_url() ?>"><img id="logo" src="<?php echo base_url() ?>/images/logo.png"></img></a>
-			<div id="menu"><a href="#" onmouseover="abrirMenu();">CATEGORÍAS </a></div>
-			<ul id="menu-nivel-1">
+			
+		</div>
+		<div id="navbar">
+			<ul>
+				<li><a href="<?php echo base_url().'index.php/contacto'?>">Contacto</a></li>
+				<li><a href="http://casanoyasrl.com.ar/novedades/" target="_blank">Promociones</a></li>
+				<li><a href="<?php echo base_url().'index.php/empresa'?>">Empresa</a></li>
+			</ul>
+		</div>
+		<div id="menu-container">
+			<div id="menu"><a href="#"  onmouseover="abrirMenu();">CATEGORÍAS </a></div>
+			<ul id="menu-nivel-1" ;>
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
 					if (count($categorias[$i])-1>0) {
@@ -29,15 +39,8 @@
 				?>
 			<ul>
 		</div>
-		<div id="navbar">
-			<ul>
-				<li><a href="<?php echo base_url().'index.php/contacto'?>">Contacto</a></li>
-				<li><a href="http://casanoyasrl.com.ar/novedades/" target="_blank">Promociones</a></li>
-				<li class="active-li"><a href="<?php echo base_url().'index.php/empresa'?>">Empresa</a></li>
-			<ul>
-		</div>
 		
-	</header>  
+	</header>	
 	<div id="ofertas">
 		<ul class="rslides">
 			<li><img src="<?php echo base_url() ?>/images/empresa.png" style=""></img></li>
