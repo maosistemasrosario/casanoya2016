@@ -74,8 +74,8 @@ header:before
 	margin-left:initial;
 	top: 20px;				*/
 	margin: 0;
-	margin-left: 10%;
-	width: 10%;
+	margin-left: 12%;
+	width: 11%;
 	height: 20px;	
 	border: 1px solid rgba(207,7,4,0.9);
 	background-color: rgba(207,7,4,0.9);
@@ -89,7 +89,7 @@ header:before
 	text-decoration: none;
 	color: white;
 	font-family: Frutiger-Black;
-	padding-left: 10px;
+	padding-left: 15px;
 }
 #menu a span
 {
@@ -105,7 +105,7 @@ header:before
 	box-shadow: 0px 0px 20px #FFFFFF;
 	display: none;
 	width: 230px;
-	margin-left: 10%;
+	margin-left: 12%;
 }
 #menu-nivel-1 li
 {
@@ -177,8 +177,8 @@ header:before
 }
 #navbar ul
 {
-	padding-right: 5%;
-	padding-left: 5%;
+	padding-right: 2%;
+	padding-left: 0%;
 	margin-right: 10%;
 	float: right;
 	height: 40px;
@@ -203,7 +203,7 @@ header:before
 {
 	height: 30px;
 	width: 100%;
-	background-color: blue;
+	background-color: #01207d;
 }
 
 .active-li a
