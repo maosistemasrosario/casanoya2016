@@ -74,7 +74,7 @@ header:before
 	margin-left:initial;
 	top: 20px;				*/
 	margin: 0;
-	margin-left: 12%;
+	margin-left: 10%;
 	width: 11%;
 	height: 20px;	
 	border: 1px solid rgba(207,7,4,0.9);
@@ -105,7 +105,7 @@ header:before
 	box-shadow: 0px 0px 20px #FFFFFF;
 	display: none;
 	width: 230px;
-	margin-left: 12%;
+	margin-left: 10%;
 }
 #menu-nivel-1 li
 {
@@ -371,9 +371,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', end
 }
 
 #url-ubicacion {
-	margin-top: 3%;	
+	/*margin-top: 3%;	
     margin-left: 200px;
-	
+	*/
 }
 
 #url-ubicacion ul {
@@ -430,7 +430,7 @@ ul.btn-categorias li.vetas2 a.destacados2:hover{}
 
 .categorias .nombre{display:block;height:18px;padding:6px 0 17px 0;color:#FFF;font-weight:bold;}
 
-.cont_art{width: 70%;margin-left: 15%;/*800px;float:right;*/padding:0 0 60px 0;/*margin:0px 0 0 0px;*/}
+.cont_art{width: 80%;margin-left: 10%;/*800px;float:right;*/padding:0 0 60px 0;/*margin:0px 0 0 0px;*/}
 .cont_art .left_arrow{width:51px;height:23px;float:left;margin:15px 0 0 0;}
 /*.cont_art .left_arrow a{display:block;width:51px;height:23px;background:transparent url(../images/left-arrow.jpg) no-repeat;}*/
 .cont_art .left_arrow a{display:block;width:51px;height:23px;background:transparent url(../images/art_izq.png) no-repeat;}

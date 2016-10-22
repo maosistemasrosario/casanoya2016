@@ -84,9 +84,9 @@ function changeImg(l){
 		
 	</header>           
 	<section  id="section-producto">
-	<div id="url-ubicacion"><ul class='url-ubicacion ul a'><a href="<?php echo base_url() ?>">Home - <?php echo strtolower($art['categoria']); ?> - <?php echo "<a href='".base_url()."index.php/categorias/".$art['subcat_id']."/0'>".$art['subcategoria']."</a>" ?></a> - <a href="#"><?php echo strtolower($art['nombre']);?></a></ul></div>
     <div class="clearfix">
     	<div class="cont_art clearfix">
+			<div id="url-ubicacion"><ul class='url-ubicacion ul a'><a href="<?php echo base_url() ?>">HOME - <?php echo strtoupper($art['categoria']); ?> - <?php echo "<a href='".base_url()."index.php/categorias/".$art['subcat_id']."/0'>".strtoupper($art['subcategoria'])."</a>" ?></a> - <a href="#"><?php echo strtoupper($art['nombre']);?></a></ul></div>
         	<div class="left_arrow">
             	<?php
 					if($art['prev'] != ''){
