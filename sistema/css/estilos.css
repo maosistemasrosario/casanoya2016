@@ -16,7 +16,7 @@
 }
 html body
 {
-	background: url("../images/fondo.png") no-repeat fixed center;
+	background: white no-repeat fixed center;
 	background-size: cover;	
 	margin:0;
 	padding:0;
