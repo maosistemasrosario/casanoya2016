@@ -72,6 +72,19 @@ function selectCheck(){
 					?>
                 </select>
                 <br /><br />
+				<?php
+					if($art[0]->activo){
+				?>
+                	<label>Activo <input type="checkbox" name="activo" checked="checked" /></label><br />
+                <?php
+					}else{
+				?>
+                	<label>Activo <input type="checkbox" name="activo" /></label><br />
+                    
+                <?php
+					}
+				?>
+                <br /><br />
                 <?php
 					if($art[0]->destacado){
 				?>
@@ -84,6 +97,20 @@ function selectCheck(){
                 <?php
 					}
 				?>
+                <br /><br />
+				Tipo<br />
+				<select name="tipo">
+                	
+                	<?php
+						
+						foreach($condiciones as $row){
+							echo "<option value='$row->id'>$row->descripcion</option>";	
+						}
+					?>
+                </select>
+                <br /><br />
+				Descuento <br />
+				<input type="number" name="porcentaje" value="<?php echo $art[0]->porcentaje ?>" class="ui-state-default" step="any" style="width:50px" /> %
                 <br /><br />
             	Codigo <br />
 				<input type="text" name="codigo" value="<?php echo $art[0]->codigo ?>" class="ui-state-default" />
@@ -227,7 +254,23 @@ function selectCheck(){
 					?>
                 </select>
                 <br /><br />
+				<label>Activo <input type="checkbox" name="activo" /></label>
+                <br /><br />
                 <label>Producto destacado? <input type="checkbox" name="destacado" /></label>
+                <br /><br />
+				Tipo <br />
+				<select name="tipo" style="width:100px">
+                	<option value=''></option>
+                	<?php
+						
+						foreach($marcas->result() as $row){
+							echo "<option value='$row->id'>$row->descripcion</option>";	
+						}
+					?>
+                </select>
+                <br /><br />
+				Descuento <br />
+				<input type="number" name="porcentaje" value="" class="ui-state-default" step="any" style="width:50px" /> %
                 <br /><br />
             	Codigo <br />
 				<input type="text" name="codigo" class="ui-state-default" />

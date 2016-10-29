@@ -51,6 +51,12 @@ class Articulos extends controller{
 				$destacado = false;	
 			}
 			
+			if(isset($_POST['activo'])){
+				$activo = true;
+			}else{
+				$activo = false;	
+			}
+			
 			$desct_sec = 0;
 			if(isset($_POST['delos']) && isset($_POST['vetas'])){
 				$desct_sec = 3;
@@ -74,6 +80,8 @@ class Articulos extends controller{
 					//'precio' => $_POST['precio'],
 					'description' => $_POST['description'],
 					'destacado' => $destacado,
+					'activo' => $activo,
+					'porcentaje' => $_POST['porcentaje'],
 					'desct_sec' => $desct_sec
 				);
 			
@@ -220,6 +228,7 @@ class Articulos extends controller{
 					//'precio' => $_POST['precio'],
 					'description' => $_POST['description'],
 					'destacado' => $destacado,
+					'porcentaje' => $_POST['porcentaje'],
 					//'destacado' => $dest_sec
 				);
 			
