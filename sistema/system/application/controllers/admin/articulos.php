@@ -17,6 +17,7 @@ class Articulos extends controller{
 		$data['marcas'] = $this->_getMarcas();
 		$data['colores'] = $this->_getColores();
 		$data['listas'] = $this->_getListas();
+		$data['condiciones'] = array('NUEVO','OFERTA','DESCUENTO');
 		$this->load->view('admin/articulos', $data);
 				
 	}
@@ -404,10 +405,10 @@ class Articulos extends controller{
 		$data['subcategoriasEdit'] = $this->articulos_model->getSubCategoriasEdit($subcatId[0]->subcatId);
 		$marcaId = $data['query']->result();
 		$data['marcas'] = $this->articulos_model->getMarcasEdit($marcaId[0]->marcaId);
+		$data['condiciones'] = array('NUEVO','OFERTA','DESCUENTO');
 		$data['colores'] = $this->articulos_model->getColoresEdit($id);
 		$data['images'] = $this->articulos_model->getImages($id);
 		$data['listas'] = $this->articulos_model->getListasEdit($id);
-		
 		$this->load->view("admin/articulos", $data);
 		//redirect('admin/articulos', 'location');
 	}

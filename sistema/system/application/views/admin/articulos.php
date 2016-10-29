@@ -100,11 +100,11 @@ function selectCheck(){
                 <br /><br />
 				Tipo<br />
 				<select name="tipo">
-                	
+                	<option value=''></option>
                 	<?php
 						
 						foreach($condiciones as $row){
-							echo "<option value='$row->id'>$row->descripcion</option>";	
+							echo "<option value='$row'>$row</option>";	
 						}
 					?>
                 </select>
@@ -263,8 +263,8 @@ function selectCheck(){
                 	<option value=''></option>
                 	<?php
 						
-						foreach($marcas->result() as $row){
-							echo "<option value='$row->id'>$row->descripcion</option>";	
+						foreach($condiciones as $row){
+							echo "<option value='$row'>$row</option>";	
 						}
 					?>
                 </select>
