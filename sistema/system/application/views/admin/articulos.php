@@ -99,12 +99,17 @@ function selectCheck(){
 				?>
                 <br /><br />
 				Tipo<br />
-				<select name="tipo">
+				<select name="condicion" style="width:120px">
                 	<option value=''></option>
-                	<?php
+					<?php
 						
-						foreach($condiciones as $row){
-							echo "<option value='$row'>$row</option>";	
+						foreach($condicion as $row){
+							if($art[0]->condicion == $row) {
+								echo "<option value='$row' selected='selected'>$row</option>";	
+							} else {
+								echo "<option value='$row'>$row</option>";
+							}
+								
 						}
 					?>
                 </select>
@@ -259,12 +264,12 @@ function selectCheck(){
                 <label>Producto destacado? <input type="checkbox" name="destacado" /></label>
                 <br /><br />
 				Tipo <br />
-				<select name="tipo" style="width:100px">
+				<select name="condicion" style="width:120px">
                 	<option value=''></option>
-                	<?php
+					<?php
 						
-						foreach($condiciones as $row){
-							echo "<option value='$row'>$row</option>";	
+						foreach($condicion as $row){
+							echo "<option value='$row'->$row</option>";	
 						}
 					?>
                 </select>
