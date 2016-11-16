@@ -58,47 +58,60 @@
 			}
 			for($i=0; $i<count($marcas); $i++){
 				echo "<div class='categorias'>";
-					echo "<div class='title table-producto-titulo'>";
-						echo strtoupper($marcas[$i]['title']);
-						echo "<select name='ordenarPor' onchange='ordenarPor(this.value)'>";
-							if ($order==0) {
-								echo "<option value='0' selected='selected'>Marca </option>";
-							} else {
-								echo "<option value='0'>Marca </option>";
-							}
-							if ($order==1) {
-								echo "<option value='1' selected='selected'>Precio </option>";
-							} else {
-								echo "<option value='1' >Precio </option>";
-							}
-						echo "</select>";
-						echo "<label>Ordenar por:</label>";
-					echo "</div>";
 					echo "<div class='articulos container-fluid'>";
-						echo "<ul class='art clearfix row'>";
-							for($e=0; $e<count($marcas[$i])-2; $e++){
-								echo "<div class='productos-cell col-md-3 col-xs-12 col-sm-6' style=''>";
-									echo "<table class='table-producto'>";
-										echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
-										echo "<tr style='background-color: white;'>";
-											echo "<td style='min-height: 230px;height: 230px;'>";
-												echo "<a href='".base_url()."index.php/articulo/".$marcas[$i][$e]['art_id']."/".$this->uri->segment(3)."'><img src='".base_url().$marcas[$i][$e]['img'] ."'/></a>";
-											echo "</td>";
-										echo "</tr>";
-										echo "<tr class='table-producto-titulo'>";
-											echo "<td><p>".$marcas[$i][$e]['marca']."</p></td>";
-										echo "</tr>";
-										echo "<tr class='table-producto-descripcion'>";
-											echo "<td><p>".$marcas[$i][$e]['nombre']."</p></td>";
-										echo "</tr>";
-										echo "<tr class='table-producto-precio'>";
-											echo "<td><p><span>$ ".number_format ( $marcas[$i][$e]['precio'] , 0, ",", "." )."</span></p></td>";
-										echo "</tr>";
-										echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
-									echo "</table>";
+						echo "<div class='row'>";
+							echo "<div class='col-md-3 col-xs-12 col-sm-6'>";
+								echo "<table class='table-categorias'>";
+									echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
+								echo "</table>";
+							echo "</div>";
+							echo "<div class='col-md-9 col-xs-12 col-sm-6'>";
+								echo "<div class='row'>";
+									echo "<div class='col-md-12 col-xs-12 col-sm-12' style=''>";
+										echo "<div class='title table-producto-titulo'>";
+											echo strtoupper($marcas[$i]['title']);
+											echo "<select name='ordenarPor' onchange='ordenarPor(this.value)'>";
+												if ($order==0) {
+													echo "<option value='0' selected='selected'>Marca </option>";
+												} else {
+													echo "<option value='0'>Marca </option>";
+												}
+												if ($order==1) {
+													echo "<option value='1' selected='selected'>Precio </option>";
+												} else {
+													echo "<option value='1' >Precio </option>";
+												}
+											echo "</select>";
+											echo "<label>Ordenar por:</label>";
+										echo "</div>";
+									echo "</div>";	
 								echo "</div>";
-							}
-						echo "</ul>";
+								echo "<ul class='art clearfix row'>";
+									for($e=0; $e<count($marcas[$i])-2; $e++){
+										echo "<div class='productos-cell col-md-4 col-xs-12 col-sm-6' style=''>";
+											echo "<table class='table-producto'>";
+												echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
+												echo "<tr style='background-color: white;'>";
+													echo "<td style='min-height: 230px;height: 230px;'>";
+														echo "<a href='".base_url()."index.php/articulo/".$marcas[$i][$e]['art_id']."/".$this->uri->segment(3)."'><img src='".base_url().$marcas[$i][$e]['img'] ."'/></a>";
+													echo "</td>";
+												echo "</tr>";
+												echo "<tr class='table-producto-titulo'>";
+													echo "<td><p>".$marcas[$i][$e]['marca']."</p></td>";
+												echo "</tr>";
+												echo "<tr class='table-producto-descripcion'>";
+													echo "<td><p>".$marcas[$i][$e]['nombre']."</p></td>";
+												echo "</tr>";
+												echo "<tr class='table-producto-precio'>";
+													echo "<td><p><span>$ ".number_format ( $marcas[$i][$e]['precio'] , 0, ",", "." )."</span></p></td>";
+												echo "</tr>";
+												echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
+											echo "</table>";
+										echo "</div>";
+									}
+								echo "</ul>";
+							echo "</div>";
+						echo "</div>";
 					echo "</div>";
 				echo "</div>";
 			}
