@@ -115,7 +115,7 @@ function selectCheck(){
                 </select>
                 <br /><br />
 				Descuento <br />
-				<input type="number" name="porcentaje" value="<?php echo $art[0]->porcentaje ?>" class="ui-state-default" step="any" style="width:50px" /> %
+				<input type="number" min="0" name="porcentaje" value="<?php echo $art[0]->porcentaje ?>" class="ui-state-default" step="any" style="width:50px" /> %
                 <br /><br />
             	Codigo <br />
 				<input type="text" name="codigo" value="<?php echo $art[0]->codigo ?>" class="ui-state-default" />
@@ -275,7 +275,7 @@ function selectCheck(){
                 </select>
                 <br /><br />
 				Descuento <br />
-				<input type="number" name="porcentaje" value="" class="ui-state-default" step="any" style="width:50px" /> %
+				<input type="number" min="0" name="porcentaje" value="" class="ui-state-default" step="any" style="width:50px" /> %
                 <br /><br />
             	Codigo <br />
 				<input type="text" name="codigo" class="ui-state-default" />
