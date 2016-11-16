@@ -82,9 +82,11 @@ class botonera extends Model{
 				$id = $art->art_id;
 				$condicion = "";
 				if($art->condicion == "NUEVO") {
-					$condicion = "NUEVO !";
+					$condicion = "NUEVO!";
 				} else if ($art->condicion == "DESCUENTO") {
 					$condicion = "- ".$art->porcentaje." %"; 
+				} else if ($art->condicion == "OFERTA") {
+					$condicion = "OFERTA!";
 				}
 				$query_img = $this->db->query("select big from img where artId = ".$id." order by img_id ASC limit 1");
 				$result = $query_img->result();

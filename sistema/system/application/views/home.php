@@ -108,9 +108,18 @@
 				<div class="productos-cell col-md-<?php echo $cant_col ?> col-xs-12 col-sm-<?php echo $col_sm ?>" style="">
 					<table class="table-producto">
 						<tr><td style="min-height: 40px;height: 40px;padding-bottom: 0px;" >
-								<div id="condiciones">
-										<?php echo $productos[$j]['condicion'];?>									
-								</div>
+								<?php 
+									if ($productos[$j]['condicion']=='OFERTA!') {?>
+										<div class="oferta">
+												<?php echo $productos[$j]['condicion'];?>									
+										</div>
+								<?php
+									} elseif ($productos[$j]['condicion']!='') { ?>
+										<div class="condiciones">
+												<?php echo $productos[$j]['condicion'];?>									
+										</div>
+								<?php
+									} ?>	
 							</td>
 						</tr>
 						<tr style="background-color: white;">
