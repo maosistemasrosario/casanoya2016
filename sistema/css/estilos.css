@@ -322,6 +322,7 @@ header:before
 .table-producto-titulo
 {
 	height: 30px;
+	margin-bottom: 20px !important;
 	/*background: rgba(231,56,39,0.7);
 background: -moz-linear-gradient(top, rgba(231,56,39,0.7) 0%, rgba(231,56,39,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(231,56,39,0.7)), color-stop(100%, rgba(231,56,39,1)));
@@ -364,6 +365,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', end
 	padding-bottom: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+.table-categorias
+{
+	width: 230px;
+	margin: 0;
+	text-align: left;
+	border: 2px solid #D3D3D3 !important;
+	height: 500px;
 }
 #section-producto
 {
@@ -648,4 +657,29 @@ footer address a {
 	color: red;
 	padding-left: 45px;
 	padding-left: 0px;
+}
+
+.condiciones
+{
+	background: #01207d;
+	width:100px;
+	color:white;
+	padding: 10px;
+    text-align: center;
+    font-size: 1.1em;
+}
+.oferta
+{
+	background: red;
+	width:100px;
+	color:white;
+	text-align: center;
+    font-size: 1.1em;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 35px;
+    position: absolute;
+    margin-top: -10px;
+    right: 20px;
 }

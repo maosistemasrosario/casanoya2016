@@ -107,7 +107,21 @@
 				?>
 				<div class="productos-cell col-md-<?php echo $cant_col ?> col-xs-12 col-sm-<?php echo $col_sm ?>" style="">
 					<table class="table-producto">
-						<tr><td style="min-height: 40px;height: 40px;"></td></tr>
+						<tr><td style="min-height: 40px;height: 40px;padding-bottom: 0px;" >
+								<?php 
+									if ($productos[$j]['condicion']=='OFERTA!') {?>
+										<div class="oferta">
+												<?php echo $productos[$j]['condicion'];?>									
+										</div>
+								<?php
+									} elseif ($productos[$j]['condicion']!='') { ?>
+										<div class="condiciones">
+												<?php echo $productos[$j]['condicion'];?>									
+										</div>
+								<?php
+									} ?>	
+							</td>
+						</tr>
 						<tr style="background-color: white;">
 							<td style="min-height: 230px;height: 230px;">
 								<a href="<?php echo base_url()?>index.php/articulo/<?php echo $productos[$j]['id']; ?>/0"><img src="<?php echo base_url() ?><?php echo $productos[$j]['imagen']; ?>"></img></a>
