@@ -259,7 +259,7 @@ function selectCheck(){
 					?>
                 </select>
                 <br /><br />
-				<label>Activo <input type="checkbox" name="activo" /></label>
+				<label>Activo <input type="checkbox" name="activo" checked='checked' /></label>
                 <br /><br />
                 <label>Producto destacado? <input type="checkbox" name="destacado" /></label>
                 <br /><br />
