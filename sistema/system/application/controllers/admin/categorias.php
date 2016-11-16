@@ -28,11 +28,17 @@ class Categorias extends controller{
 			}else{
 				$delos = false;	
 			}
-			
+			if(isset($_POST['activo'])){
+				$activo = true;
+			}else{
+				$activo = false;	
+			}
+
 			$data = array(
 				'categoria' => $_POST['categoria'],
 				'delos' => $delos,
-				'vetas' => $vetas
+				'vetas' => $vetas,
+				'activo' => $activo
 			);
 			
 			$this->db->where('id', $_POST['id']);
@@ -51,11 +57,17 @@ class Categorias extends controller{
 			}else{
 				$delos = false;	
 			}
+			if(isset($_POST['activo'])){
+				$activo = true;
+			}else{
+				$activo = false;	
+			}
 			
 			$data = array(
 				'categoria' => $_POST['categoria'],
 				'delos' => $delos,
-				'vetas' => $vetas
+				'vetas' => $vetas,
+				'activo' => $activo
 			);
 			$this->db->insert('categorias', $data);	
 			redirect('admin/categorias','location');	
@@ -92,7 +104,8 @@ class Categorias extends controller{
 			return array(
 				'categoria' => $res[0]->categoria,
 				'delos' => $res[0]->delos,
-				'vetas' => $res[0]->vetas
+				'vetas' => $res[0]->vetas,
+				'activo' => $res[0]->activo
 				);
 				
 		}

@@ -29,12 +29,18 @@ class Subcategorias extends controller{
 			}else{
 				$delos = false;	
 			}
+			if(isset($_POST['activo'])){
+				$activo = true;
+			}else{
+				$activo = false;	
+			}
 			
 			$data = array(
 				'subcategoria' => $_POST['subcategoria'],
 				'delos' => $delos,
 				'vetas' => $vetas,
-				'id_cat' => $_POST['categoria']
+				'id_cat' => $_POST['categoria'],
+				'activo' => $activo
 			);
 			
 			$this->db->where('id_sub', $_POST['id']);
@@ -53,12 +59,18 @@ class Subcategorias extends controller{
 			}else{
 				$delos = false;	
 			}
+			if(isset($_POST['activo'])){
+				$activo = true;
+			}else{
+				$activo = false;	
+			}
 			
 			$data = array(
 				'subcategoria' => $_POST['subcategoria'],
 				'delos' => $delos,
 				'vetas' => $vetas,
-				'id_cat' => $_POST['categoria']
+				'id_cat' => $_POST['categoria'],
+				'activo' => $activo
 			);
 			$this->db->insert('subcategorias', $data);	
 			redirect('admin/subcategorias','location');	
@@ -110,7 +122,8 @@ class Subcategorias extends controller{
 				'delos' => $res[0]->delos,
 				'vetas' => $res[0]->vetas,
 				'id_cat' => $res[0]->id_cat,
-				'categoria' => $res[0]->categoria
+				'categoria' => $res[0]->categoria,
+				'activo' => $res[0]->activo
 				);
 				
 		}

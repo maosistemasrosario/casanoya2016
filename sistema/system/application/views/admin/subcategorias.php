@@ -32,6 +32,19 @@
             	Sub-categoria <br />
            		<input type="text" name="subcategoria" value="<?php echo $value['subcategoria'] ?>" class="ui-state-default" />
                 <br />
+                <br />
+            <?php
+                if($value["activo"]){
+            ?>
+                <label>Activo <input type="checkbox" name="activo" checked="checked" /></label><br />
+            <?php
+                }else{
+            ?>
+                <label>Activo <input type="checkbox" name="activo" /></label><br />
+                    
+            <?php
+                }
+            ?>
                 
             <?php }else{ ?>
             	Categoria
@@ -57,6 +70,9 @@
                 <br /><br />
             	Sub-categoria <br />
 				<input type="text" name="subcategoria" class="ui-state-default" />
+                <br />
+                <br />
+                <label>Activo <input type="checkbox" name="activo" checked="checked" /></label><br />
                 
             <?php } ?>
             <br /><br />

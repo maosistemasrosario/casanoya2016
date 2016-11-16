@@ -10,10 +10,26 @@
 			?>	
            		<input type="text" name="categoria" value="<?php echo $value['categoria'] ?>" class="ui-state-default" />
                 <br />
+                <br />
+            <?php
+                if($value["activo"]){
+            ?>
+                <label>Activo <input type="checkbox" name="activo" checked="checked" /></label><br />
+            <?php
+                }else{
+            ?>
+                <label>Activo <input type="checkbox" name="activo" /></label><br />
+                    
+            <?php
+                }
+            ?>
                 
             <?php }else{ ?>
             	<input type="text" name="categoria" class="ui-state-default" />
                 <br />
+                <br />
+                <label>Activo <input type="checkbox" name="activo" checked="checked" /></label><br />
+
             <?php } ?>
             <br /><br />
             <input type="submit" class="ui-state-default" value="Guardar" />	
