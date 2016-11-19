@@ -12,23 +12,31 @@ class Categorias extends Controller{
 	}
 	
 	function indexOrder($id, $brand, $order){
+		$this->indexMarca($id, $brand, $order, 0);
+	}
+
+	function indexMarca($id, $brand, $order){
 		$header['title'] = 'Casa Noya S.R.L.';
 		$header['style'] = 'css/estilos.css';
 		
 		$this->load->view('header', $header);
 		
-		$marcas = $this->botonera->getSubCategoria($id);//array();
+		$productos = $this->botonera->getSubCategoria($id);//array();
 		/*$marcas[] = array(
 							'id' => '1',
 							'title' => 'Todas las Marcas'
 							);*/
 		$art = array();
 		
-		for($i=0; $i<count($marcas); $i++){
+		for($i=0; $i<count($productos); $i++){
 			$orderBy = 'marca';
 			if ($order==1)
 				$orderBy = 'precio';
-			$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=".$id." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
+			if ($brand==0) {
+				$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=".$id." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
+			} else {
+				$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=".$id." and m.id =".$brand." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
+			}
 			
 			foreach($query->result() as $row){
 				$query2 = $this->db->query("select big from img where artId=".$row->art_id." order by img_id ASC limit 1");
@@ -38,7 +46,7 @@ class Categorias extends Controller{
 				}else{
 					$img = '';	
 				}
-				$marcas[$i][]=array(
+				$productos[$i][]=array(
 							'art_id' => $row->art_id,
 							'nombre' => $row->nombre,
 							'codigo' => $row->codigo,
@@ -48,8 +56,22 @@ class Categorias extends Controller{
 						);
 			}
 		}
+
+		$sql = "select a.marcaId, m.marca, count(*) as cant from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, marcas m where subcatId=".$id." and a.marcaId=m.id and l.isDefault=1 group by a.marcaId order by m.marca ASC";
+		
+		$marcas = array();
+		
+		$query = $this->db->query($sql);
+		foreach($query->result() as $marca){
+			$marcas[] = array(
+							'id' => $marca->marcaId,
+							'title' => $marca->marca,
+							'cantidad' => $marca->cant
+							);
+		}
 		
 		$data['marcas'] = $marcas;
+		$data['productos'] = $productos;
 		$data['art'] = $art;
 		
 		$data['categorias'] = $this->botonera->cargarSubCategorias();
