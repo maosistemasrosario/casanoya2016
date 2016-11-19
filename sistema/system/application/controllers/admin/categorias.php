@@ -38,7 +38,8 @@ class Categorias extends controller{
 				'categoria' => $_POST['categoria'],
 				'delos' => $delos,
 				'vetas' => $vetas,
-				'activo' => $activo
+				'activo' => $activo,
+				'nro_orden' => $_POST['nroOrden']
 			);
 			
 			$this->db->where('id', $_POST['id']);
@@ -67,7 +68,8 @@ class Categorias extends controller{
 				'categoria' => $_POST['categoria'],
 				'delos' => $delos,
 				'vetas' => $vetas,
-				'activo' => $activo
+				'activo' => $activo,
+				'nro_orden' => $_POST['nroOrden']
 			);
 			$this->db->insert('categorias', $data);	
 			redirect('admin/categorias','location');	
@@ -105,7 +107,8 @@ class Categorias extends controller{
 				'categoria' => $res[0]->categoria,
 				'delos' => $res[0]->delos,
 				'vetas' => $res[0]->vetas,
-				'activo' => $res[0]->activo
+				'activo' => $res[0]->activo,
+				'nro_orden' => $res[0]->nro_orden
 				);
 				
 		}
