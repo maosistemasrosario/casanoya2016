@@ -372,7 +372,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', end
 	margin: 0;
 	text-align: left;
 	border: 2px solid #D3D3D3 !important;
-	height: 500px;
+	height: 465px;
 }
 #section-producto
 {
@@ -393,6 +393,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', end
 #url-ubicacion ul a {
 	color: rgba(231,56,39,0.7);
 	text-decoration: none;
+}
+
+.menu-lateral {
+	margin-top: 10px;
+}
+.menu-lateral li{
+	color: rgba(231,56,39,0.7);
+    list-style: none;
+    padding-bottom: 10px;
+}
+.menu-lateral li a{
+	color: rgba(231,56,39,0.7);
+    text-decoration: none;
+}
+.submenu-lateral {
+	margin-top: 10px;	
+	margin-left: 0px;
+	padding-left: 0px;
+}
+.submenu-lateral li{
+	color: black;
+    list-style: none;
+    padding-bottom: 2px;
+    font-size: 0.8em;
+}
+.submenu-lateral li a{
+	color: black;
+    text-decoration: none;
+}
+.submenu-lateral-activa {
+	color: rgba(231,56,39,0.7) !important;
 }
 
 ul.btn-categorias{position:absolute;height:401px;list-style:none;padding:57px 0 0 0;margin:0;background:transparent url(../images/fondon.png) repeat; left: 50%-200; z-index:10; font-family:Arial, Helvetica, sans-serif; font-size:16px; width:190px; text-align:left;}

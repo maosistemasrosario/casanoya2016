@@ -23,12 +23,22 @@
             <?php
                 }
             ?>
+
+            <br />
+                Nro de Orden <br />
+                <input type="number" min="0" name="nroOrden" value="<?php echo $value['nro_orden'] ?>" class="ui-state-default" step="any" style="width:50px" />
+            <br /><br />
                 
             <?php }else{ ?>
             	<input type="text" name="categoria" class="ui-state-default" />
                 <br />
                 <br />
                 <label>Activo <input type="checkbox" name="activo" checked="checked" /></label><br />
+
+            <br />
+                Nro de Orden <br />
+                <input type="number" min="0" name="nroOrden" value="" class="ui-state-default" step="any" style="width:50px" />
+            <br /><br />
 
             <?php } ?>
             <br /><br />

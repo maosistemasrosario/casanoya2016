@@ -111,12 +111,14 @@ class botonera extends Model{
 
         function cargarSubCategorias(){
 		
-			$query = $this->db->query("select * from categorias order by categoria ASC");
+			$query = $this->db->query("select * from categorias where activo=1 order by nro_orden ASC, categoria ASC");
 			$btn = array();
 			foreach($query->result() as $q=>$cat){
 				$categoria = strtolower($cat->categoria);
 				$btn[] =array('categoria' => $categoria);
-				$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." order by subcategoria ASC");
+		
+				$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." and activo=1 order by subcategoria ASC");
+				
 				foreach($querySub->result() as $k=>$sub){
 					$btn[$q][] = array(
 									'sub' => strtolower($sub->subcategoria),
