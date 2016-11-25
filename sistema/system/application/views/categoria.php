@@ -66,14 +66,20 @@
 									echo "<td style='min-height: 40px;height: 40px;vertical-align: top;'>";
 									echo "<ul class='menu-lateral'>";
 									echo "<li><a href='".base_url()."'>HOME</a></li>";
-									echo "<li><a href='".base_url()."index.php/categorias/".$id."/0'>".strtoupper($productos[$i]['title'])."</a></li>";
+									echo "<li><a href='".base_url()."index.php/categoria/".$id."/0'>".strtoupper($productos[$i]['title'])."</a>";
+									echo "<ul class='submenu-lateral'>";
+									for($j=0; $j<count($subcategorias); $j++){
+										echo "<li><a href='".base_url()."index.php/categorias/".$subcategorias[$j]['id']."/0'>".strtoupper($subcategorias[$j]['title'])." (".$subcategorias[$j]['cantidad'].")</a></li>";
+									}
+									echo "</ul>";
+									echo "</li>";
 									echo "<li>MARCAS";
 									echo "<ul class='submenu-lateral'>";
 									for($j=0; $j<count($marcas); $j++){
 										if ($brand==$marcas[$j]['id']) {
 											echo "<li class='submenu-lateral-activa'>".$marcas[$j]['title']." (".$marcas[$j]['cantidad'].")</li>";
 										} else {
-											echo "<li><a href='".base_url()."index.php/categorias/".$id."/".$marcas[$j]['id']."'>".$marcas[$j]['title']." (".$marcas[$j]['cantidad'].")</a></li>";
+											echo "<li><a href='".base_url()."index.php/categoria/".$id."/".$marcas[$j]['id']."'>".$marcas[$j]['title']." (".$marcas[$j]['cantidad'].")</a></li>";
 										}
 									}
 									echo "</ul>";
@@ -187,7 +193,7 @@
 			$("footer").css("position","absolute");
 		}
 		function ordenarPor(marca) {
-			window.location = "<?php echo base_url().'index.php/categorias/'.$id.'/'.$brand.'/'?>"+marca;
+			window.location = "<?php echo base_url().'index.php/categoria/'.$id.'/'.$brand.'/'?>"+marca;
 		}
 	</script>
 </body>

@@ -69,7 +69,21 @@ class Categoria extends Controller{
 							'cantidad' => $marca->cant
 							);
 		}
+
+		$sqlSub = "select a.subcatId, s.subcategoria, count(*) as cant from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, subcategorias s where catId=".$id." and a.subcatId=s.id_sub and l.isDefault=1 group by a.subcatId order by s.subcategoria ASC";
 		
+		$subcategorias = array();
+		
+		$querySub = $this->db->query($sqlSub);
+		foreach($querySub->result() as $subcat){
+			$subcategorias[] = array(
+							'id' => $subcat->subcatId,
+							'title' => $subcat->subcategoria,
+							'cantidad' => $subcat->cant
+							);
+		}
+		
+		$data['subcategorias'] = $subcategorias;
 		$data['marcas'] = $marcas;
 		$data['productos'] = $productos;
 		$data['art'] = $art;

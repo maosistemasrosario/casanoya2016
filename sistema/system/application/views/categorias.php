@@ -66,6 +66,7 @@
 									echo "<td style='min-height: 40px;height: 40px;vertical-align: top;'>";
 									echo "<ul class='menu-lateral'>";
 									echo "<li><a href='".base_url()."'>HOME</a></li>";
+									echo "<li><a href='".base_url()."index.php/categoria/".$categoria[$i]['id_cat']."/0'>".strtoupper($categoria[$i]['categoria'])."</a></li>";
 									echo "<li><a href='".base_url()."index.php/categorias/".$id."/0'>".strtoupper($productos[$i]['title'])."</a></li>";
 									echo "<li>MARCAS";
 									echo "<ul class='submenu-lateral'>";

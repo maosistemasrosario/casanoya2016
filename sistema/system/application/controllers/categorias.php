@@ -22,6 +22,7 @@ class Categorias extends Controller{
 		$this->load->view('header', $header);
 		
 		$productos = $this->botonera->getSubCategoria($id);//array();
+		$categoria = $this->botonera->getCategoriaFromSubcategoria($id);
 		/*$marcas[] = array(
 							'id' => '1',
 							'title' => 'Todas las Marcas'
@@ -83,6 +84,7 @@ class Categorias extends Controller{
 		
 		$data['marcas'] = $marcas;
 		$data['productos'] = $productos;
+		$data['categoria'] = $categoria;
 		$data['art'] = $art;
 		
 		$data['categorias'] = $this->botonera->cargarSubCategorias();

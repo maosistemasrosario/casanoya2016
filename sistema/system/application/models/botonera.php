@@ -140,6 +140,17 @@ class botonera extends Model{
 			return $btn;
 		}
 
+		function getCategoriaFromSubcategoria($id){
+			$querySub = $this->db->query("select * from subcategorias as s, categorias as c where s.id_cat=c.id and s.id_sub=".$id." order by s.subcategoria ASC");
+			foreach($querySub->result() as $k=>$sub){
+				$btn[] = array(
+								'id_cat' => $sub->id_cat,
+								'categoria' => $sub->categoria
+								);
+			}
+			return $btn;
+		}
+
 		function getCategoria($id){
 			$querySub = $this->db->query("select * from categorias where id=".$id." order by categoria ASC");
 			foreach($querySub->result() as $k=>$sub){
