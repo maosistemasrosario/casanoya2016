@@ -150,6 +150,17 @@ class botonera extends Model{
 			}
 			return $btn;
 		}
+
+		function getSitioInactivo(){
+			$querySub = $this->db->query("select inactivo from general where general_id=1");
+			foreach($querySub->result() as $k=>$sub){
+				if ($sub->inactivo==0) {
+					return FALSE;
+				} else {
+					return TRUE;
+				}
+			}
+		}
     
 }
 

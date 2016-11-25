@@ -78,7 +78,12 @@ class Categoria extends Controller{
 		$data['id'] = $id;
 		$data['brand'] = $brand;
 		$data['order'] = $order;
-		$this->load->view('categoria', $data);
+		if ($this->botonera->getSitioInactivo()) {
+			$this->load->view('home_mantenimiento', $data);	
+		} else {
+			$this->load->view('categoria', $data);
+		}
+		
 	}
 
 }

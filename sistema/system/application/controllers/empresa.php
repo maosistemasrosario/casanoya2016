@@ -12,7 +12,12 @@ class Empresa extends Controller{
 	
 	function index(){
 		$data['categorias'] = $this->botonera->cargarSubCategorias();
-		$this->load->view('empresa', $data);
+		if ($this->botonera->getSitioInactivo()) {
+			$this->load->view('home_mantenimiento', $data);	
+		} else {
+			$this->load->view('empresa', $data);
+		}
+		
 	}
 	
 }
