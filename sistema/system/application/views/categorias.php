@@ -90,7 +90,20 @@
 									for($e=0; $e<count($marcas[$i])-2; $e++){
 										echo "<div class='productos-cell col-md-4 col-xs-12 col-sm-6' style=''>";
 											echo "<table class='table-producto'>";
-												echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
+												echo "<tr><td style='min-height: 40px;height: 40px;padding-bottom: 0px;'>";
+																	
+													if ($marcas[$i][$e]['condicion']=='OFERTA!') {
+														echo "<div class='oferta'>";
+																 echo $marcas[$i][$e]['condicion'];									
+														echo "</div>";
+													} elseif ($marcas[$i][$e]['condicion']!='') { 
+														echo "<div class='condiciones'>";
+																 echo $marcas[$i][$e]['condicion'];									
+														echo "</div>";
+												
+													} 
+												echo"</td></tr>";
+														
 												echo "<tr style='background-color: white;'>";
 													echo "<td style='min-height: 230px;height: 230px;'>";
 														echo "<a href='".base_url()."index.php/articulo/".$marcas[$i][$e]['art_id']."/".$this->uri->segment(3)."'><img src='".base_url().$marcas[$i][$e]['img'] ."'/></a>";
