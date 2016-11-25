@@ -47,6 +47,8 @@ $route['scaffolding_trigger'] = "scaffolding";
 $route['admin'] = "admin/welcome";
 $route['categorias/(:num)/(:num)'] = "categorias/index/$1/$2";
 $route['categorias/(:num)/(:num)/(:num)'] = "categorias/indexOrder/$1/$2/$3";
+$route['categoria/(:num)/(:num)'] = "categoria/index/$1/$2";
+$route['categoria/(:num)/(:num)/(:num)'] = "categoria/indexOrder/$1/$2/$3";
 $route['articulo/(:num)/(:num)'] = "articulo/index/$1/$2";
 $route['destacados/(:num)'] = "destacados/index/$1";
 
