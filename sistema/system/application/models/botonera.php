@@ -116,6 +116,7 @@ class botonera extends Model{
 			foreach($query->result() as $q=>$cat){
 				$categoria = strtolower($cat->categoria);
 				$btn[] =array('categoria' => $categoria);
+		
 				$querySub = $this->db->query("select * from subcategorias where id_cat=".$cat->id." and activo=1 order by subcategoria ASC");
 				
 				foreach($querySub->result() as $k=>$sub){

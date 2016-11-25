@@ -107,7 +107,20 @@
 									for($e=0; $e<count($productos[$i])-2; $e++){
 										echo "<div class='productos-cell col-md-4 col-xs-12 col-sm-6' style=''>";
 											echo "<table class='table-producto'>";
-												echo "<tr><td style='min-height: 40px;height: 40px;'></td></tr>";
+												echo "<tr><td style='min-height: 40px;height: 40px;padding-bottom: 0px;'>";
+																	
+													if ($productos[$i][$e]['condicion']=='OFERTA!') {
+														echo "<div class='oferta'>";
+																 echo $productos[$i][$e]['condicion'];									
+														echo "</div>";
+													} elseif ($productos[$i][$e]['condicion']!='') { 
+														echo "<div class='condiciones'>";
+																 echo $productos[$i][$e]['condicion'];									
+														echo "</div>";
+												
+													} 
+												echo"</td></tr>";
+														
 												echo "<tr style='background-color: white;'>";
 													echo "<td style='min-height: 230px;height: 230px;'>";
 														echo "<a href='".base_url()."index.php/articulo/".$productos[$i][$e]['art_id']."/".$this->uri->segment(3)."'><img src='".base_url().$productos[$i][$e]['img'] ."'/></a>";
