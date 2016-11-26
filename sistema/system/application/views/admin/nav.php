@@ -9,6 +9,7 @@
 	//$precios = "";
 	$ofertas = "";
 	$listas = "";
+	$general = "";
 	
 	if($sec == "marcas"){
 		$marcas = $selected;	
@@ -26,12 +27,15 @@
 		$ofertas = $selected;
 	}else if($sec == "listas"){
 		$listas = $selected;
+	}else if($sec == "general"){
+		$general = $selected;
 	}	
 
 ?>
 
 <div class="ui-widget-content ui-state-default ui-corner-all ui-helper-clearfix" id="cont_btn">
     <ul class="ui-helper-reset ui-helper-clearfix ui-corner-all" id="btn">
+        <li class="ui-state-default ui-corner-top <?php echo $general; ?>"><a href="<?php echo base_url() ?>index.php/admin/general">General</a></li>
         <li class="ui-state-default ui-corner-top <?php echo $cat; ?>"><a href="<?php echo base_url() ?>index.php/admin/categorias">Categorias</a></li>
         <li class="ui-state-default ui-corner-top <?php echo $subCat; ?>"><a href="<?php echo base_url() ?>index.php/admin/subcategorias">Sub Categorias</a></li>
         <li class="ui-state-default ui-corner-top <?php echo $marcas; ?>"><a href="<?php echo base_url() ?>index.php/admin/marcas">Marcas</a></li>
