@@ -76,7 +76,7 @@ class botonera extends Model{
         }
 		
 		function cargarProductosDestacados() {
-			$query = $this->db->query("select a.art_id, a.nombre, s.subcategoria, a.condicion , a.porcentaje, lp.precio, m.marca from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id inner join subcategorias as s on s.id_sub=a.subcatId inner join marcas as m on m.id = a.marcaId where a.destacado = 1 and l.isDefault=1 order by a.nombre");
+			$query = $this->db->query("select a.art_id, a.nombre, s.subcategoria, a.condicion , a.porcentaje, lp.precio, m.marca from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id inner join subcategorias as s on s.id_sub=a.subcatId inner join marcas as m on m.id = a.marcaId where a.destacado = 1 and a.activo=1 and l.isDefault=1 order by a.nombre");
 			$btn = array();
 			foreach($query->result() as $q=>$art){
 				$id = $art->art_id;
@@ -122,7 +122,8 @@ class botonera extends Model{
 				foreach($querySub->result() as $k=>$sub){
 					$btn[$q][] = array(
 									'sub' => strtolower($sub->subcategoria),
-									'id_sub' => $sub->id_sub
+									'id_sub' => $sub->id_sub,
+									'id_cat' => $sub->id_cat
 									);
 				}
 			}

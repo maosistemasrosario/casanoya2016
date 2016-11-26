@@ -33,9 +33,9 @@ class Categoria extends Controller{
 			if ($order==1)
 				$orderBy = 'precio';
 			if ($brand==0) {
-				$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where catId=".$id." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
+				$query = $this->db->query("select a.art_id, a.nombre, a.codigo, a.condicion, a.porcentaje, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where a.activo=1 and catId=".$id." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
 			} else {
-				$query = $this->db->query("select a.art_id, a.nombre, a.codigo, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where catId=".$id." and m.id =".$brand." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
+				$query = $this->db->query("select a.art_id, a.nombre, a.codigo, a.condicion, a.porcentaje, lp.precio, m.marca from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where a.activo=1 and catId=".$id." and m.id =".$brand." and l.isDefault=1 order by ".$orderBy." ASC, nombre ASC, art_id ASC");	
 			}
 			
 			foreach($query->result() as $row){
@@ -46,18 +46,27 @@ class Categoria extends Controller{
 				}else{
 					$img = '';	
 				}
+				$condicion = "";
+				if($row->condicion == "NUEVO") {
+					$condicion = "NUEVO!";
+				} else if ($row->condicion == "DESCUENTO") {
+					$condicion = "- ".$row->porcentaje." %"; 
+				} else if ($row->condicion == "OFERTA") {
+					$condicion = "OFERTA!";
+				}
 				$productos[$i][]=array(
 							'art_id' => $row->art_id,
 							'nombre' => $row->nombre,
 							'codigo' => $row->codigo,
 							'precio' => $row->precio,
 							'marca'  => $row->marca,
+							'condicion'  => $condicion,
 							'img' => $img
 						);
 			}
 		}
 
-		$sql = "select a.marcaId, m.marca, count(*) as cant from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, marcas m where catId=".$id." and a.marcaId=m.id and l.isDefault=1 group by a.marcaId order by m.marca ASC";
+		$sql = "select a.marcaId, m.marca, count(*) as cant from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, marcas m where catId=".$id." and a.marcaId=m.id and a.activo=1 and l.isDefault=1 group by a.marcaId order by m.marca ASC";
 		
 		$marcas = array();
 		
@@ -70,7 +79,7 @@ class Categoria extends Controller{
 							);
 		}
 
-		$sqlSub = "select a.subcatId, s.subcategoria, count(*) as cant from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, subcategorias s where catId=".$id." and a.subcatId=s.id_sub and l.isDefault=1 group by a.subcatId order by s.subcategoria ASC";
+		$sqlSub = "select a.subcatId, s.subcategoria, count(*) as cant from articulos a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id, subcategorias s where catId=".$id." and a.subcatId=s.id_sub and a.activo=1 and l.isDefault=1 group by a.subcatId order by s.subcategoria ASC";
 		
 		$subcategorias = array();
 		
