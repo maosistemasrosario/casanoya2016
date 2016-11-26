@@ -397,6 +397,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', end
 
 .menu-lateral {
 	margin-top: 10px;
+	padding-left: 20px;
 }
 .menu-lateral li{
 	color: rgba(231,56,39,0.7);

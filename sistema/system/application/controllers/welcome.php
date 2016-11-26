@@ -19,7 +19,12 @@ class Welcome extends Controller {
         $data['categorias'] = $this->botonera->cargarSubCategorias();
 		$data['productos'] = $this->botonera->cargarProductosDestacados();
 		$data['ofertas'] = $this->botonera->cargarOfertas();
-		$this->load->view('home', $data);
+		if ($this->botonera->getSitioInactivo()) {
+			$this->load->view('home_mantenimiento', $data);	
+		} else {
+			$this->load->view('home', $data);
+		}
+		
 
 	}
 	

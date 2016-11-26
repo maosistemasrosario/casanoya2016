@@ -83,7 +83,12 @@ class Articulo extends Controller{
 		
 		$data['art'] = $art;
 		$data['categorias'] = $this->botonera->cargarSubCategorias();
-		$this->load->view('articulo', $data);
+
+		if ($this->botonera->getSitioInactivo()) {
+			$this->load->view('home_mantenimiento', $data);	
+		} else {
+			$this->load->view('articulo', $data);
+		}
 		
 		
 	}
