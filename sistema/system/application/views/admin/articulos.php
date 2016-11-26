@@ -384,9 +384,11 @@ function selectCheck(){
         <div id="resp">
         
         </div>
-        <ul class="lista">
+        <!--<ul class="lista">-->
             <!--<li class="ui-helper-clearfix"><div class="cont_item">hola</div><div class="ui-state-default ui-corner-all editar"><a class="ui-icon ui-icon-trash" href="?mod=borrar&id=2"></a></div><div class="ui-state-default ui-corner-all editar"><a class="ui-icon ui-icon-pencil" href="?mod=edit&id=2"></a></div></li>-->
-        </ul>
+        <!--</ul>-->
+        <table class="lista">
+        </table>
     </div>
 </div>
 </body>

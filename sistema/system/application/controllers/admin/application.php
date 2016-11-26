@@ -81,14 +81,17 @@ class Application extends Controller{
 	}
 	
 	function show_subcat($id){
-			$query = $this->db->query("select art_id, nombre from articulos where subcatId=$id");
+			$query = $this->db->query("select m.marca, a.art_id, a.nombre, a.codigo, lp.precio from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=$id and l.isDefault=1");
 			$res = $query->result();
 			$cat = array();
 			if($res){
 				foreach($res as $resul){
 					$cat[] = array(
 								'nombre' => $resul->nombre,
-								'id' => $resul->art_id
+								'id' => $resul->art_id,
+								'codigo' => $resul->codigo,
+								'marca' => $resul->marca,
+								'precio' => number_format($resul->precio, 0, ',', '.')
 							);
 				}
 			}
