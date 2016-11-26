@@ -134,7 +134,7 @@ function listas_subcat(id){
 
 function cargar_lista_subcat(data){
 	var lista = $("table.lista");
-	//lista.html("");
+	lista.html("");
 	$('<tr><th>MARCA</th><th>NOMBRE</th><th>CÓDIGO</th><th>PRECIO</th></tr>').appendTo(lista);
 	for(var i = 0; i<data.length; i++){
 		$("<tr><td>"+data[i].marca+"</td><td>"+data[i].nombre+"</td><td>"+data[i].codigo+"</td><td class='precio'>"+data[i].precio+"</td><td><div class='ui-state-default ui-corner-all editar'><a class='ui-icon ui-icon-trash' href='"+base_url+"admin/articulos/delete/"+data[i].id+"' onclick='return confirmar()'></a></div><div class='ui-state-default ui-corner-all editar'><a class='ui-icon ui-icon-pencil' href='"+base_url+"admin/articulos/edit/"+data[i].id+"'></a></div></td></tr>").appendTo(lista);	
