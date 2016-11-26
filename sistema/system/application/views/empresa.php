@@ -24,6 +24,7 @@
 						//} else {
 						echo "<a id='cat' href='javascript:void(0)'>".$categorias[$i]['categoria']."</a>";
 						echo "<ul id='menu-nivel-2'>";
+						echo "<li id='opcion_categoria'><a href='".base_url()."index.php/categoria/".$categorias[$i][0]['id_cat']."/0'>".$categorias[$i]['categoria']."</a></li>";
 						for($s=0; $s<(count($categorias[$i])-1); $s++){
 							echo "<li id='opcion_subproducto' onmouseout='return false'>";
 					

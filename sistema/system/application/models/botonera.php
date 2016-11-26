@@ -122,7 +122,8 @@ class botonera extends Model{
 				foreach($querySub->result() as $k=>$sub){
 					$btn[$q][] = array(
 									'sub' => strtolower($sub->subcategoria),
-									'id_sub' => $sub->id_sub
+									'id_sub' => $sub->id_sub,
+									'id_cat' => $sub->id_cat
 									);
 				}
 			}

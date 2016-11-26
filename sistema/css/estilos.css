@@ -152,6 +152,15 @@ header:before
 {
 	font-weight: bold;
 }
+#opcion_categoria
+{
+	padding-left: 15px !important;
+}
+#opcion_categoria a
+{
+	text-align: center;
+	font-size: 1.2em;
+}
 .pointer
 {
 	color: white;
@@ -714,10 +723,4 @@ footer address a {
     position: absolute;
     margin-top: -10px;
     right: 20px;
-}
-#menu-nivel-3 a
-{
-	color:red;
-	text-align: center;
-	font-size: 1.2em;
 }
