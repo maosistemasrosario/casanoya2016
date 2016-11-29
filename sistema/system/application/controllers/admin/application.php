@@ -81,7 +81,7 @@ class Application extends Controller{
 	}
 	
 	function show_subcat($id){
-			$query = $this->db->query("select m.marca, a.art_id, a.nombre, a.codigo from articulos as a left join marcas as m on m.id=a.marcaId where subcatId=$id order by m.marca, a.nombre, a.codigo");
+			$query = $this->db->query("select m.marca, a.activo, a.art_id, a.nombre, a.codigo from articulos as a left join marcas as m on m.id=a.marcaId where subcatId=$id order by m.marca, a.nombre, a.codigo");
 			$res = $query->result();
 			$cat = array();
 			if($res){
@@ -98,7 +98,8 @@ class Application extends Controller{
 								'id' => $resul->art_id,
 								'codigo' => $resul->codigo,
 								'marca' => $resul->marca,
-								'precio' => number_format($precio, 0, ',', '.')
+								'precio' => number_format($precio, 0, ',', '.'),
+								'activo' => $resul->activo
 							);
 				}
 			}
@@ -107,11 +108,44 @@ class Application extends Controller{
 	}
 
 	function delete_articulos($ids) {
-		$res = "";
-		foreach($ids as $resul){
-			$res = $res.$resul;
+		$ids_arr = explode("-",$ids);
+		foreach($ids_arr as $id){
+			
+			$query = $this->db->query("select planos from articulos where art_id=$id");
+			$planoPath = $query->result();
+			@unlink($planoPath[0]->planos);
+			
+			$query = $this->db->query("select * from img where artId=$id");
+			foreach($query->result() as $img){
+				@unlink($img->org);
+				@unlink($img->big);
+				@unlink($img->sample);
+				@unlink($img->thumb);
+				@unlink($img->destacado);
+			}
+			
+			$this->db->delete('articulos', array('art_id' => $id));
+			$this->db->delete('img', array('artId' => $id));
+			$this->db->delete('art_color', array('artId' => $id));
+			$this->db->delete('listas_precios', array('art_id'=>$id));
 		}
-		echo json_encode($res);
+		echo json_encode($ids);
+	}
+
+	function activar_articulos($ids) {
+		$ids_arr = explode("-",$ids);
+		foreach($ids_arr as $id){
+			$query = $this->db->query("update articulos set activo = 1 where art_id=$id");
+		}
+		echo json_encode($ids);
+	}
+
+	function desactivar_articulos($ids) {
+		$ids_arr = explode("-",$ids);
+		foreach($ids_arr as $id){
+			$query = $this->db->query("update articulos set activo = 0 where art_id=$id");
+		}
+		echo json_encode($ids);
 	}
 	
 	function deleteImg($id){
