@@ -81,7 +81,7 @@ class Application extends Controller{
 	}
 	
 	function show_subcat($id){
-			$query = $this->db->query("select m.marca, a.art_id, a.nombre, a.codigo, lp.precio from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=$id and l.isDefault=1");
+			$query = $this->db->query("select m.marca, a.art_id, a.nombre, a.codigo, lp.precio from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=$id and l.isDefault=1 order by a.nombre, a.codigo");
 			$res = $query->result();
 			$cat = array();
 			if($res){

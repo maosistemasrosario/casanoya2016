@@ -132,7 +132,7 @@
 													echo "<td><p>".$productos[$i][$e]['marca']."</p></td>";
 												echo "</tr>";
 												echo "<tr class='table-producto-descripcion'>";
-													echo "<td><p>".$productos[$i][$e]['nombre']."</p></td>";
+													echo "<td><p>".$productos[$i][$e]['nombre']." ".$productos[$i][$e]['codigo']."</p></td>";
 												echo "</tr>";
 												echo "<tr class='table-producto-precio'>";
 													echo "<td><p><span>$ ".number_format ( $productos[$i][$e]['precio'] , 0, ",", "." )."</span></p></td>";

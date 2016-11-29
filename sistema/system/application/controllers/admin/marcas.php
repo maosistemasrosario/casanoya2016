@@ -173,6 +173,7 @@ class Marcas extends controller{
 	}
 	
 	function _show(){
+		 $this->db->order_by('marca');
 			return $this->db->get('marcas');
 	}
 	

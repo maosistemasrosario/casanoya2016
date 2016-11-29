@@ -132,7 +132,7 @@
 							<td><p><?php echo $productos[$j]['marca']; ?></p></td>
 						</tr>
 						<tr class="table-producto-descripcion">
-							<td><p><?php echo $productos[$j]['nombre']; ?></p></td>
+							<td><p><?php echo $productos[$j]['nombre']; ?> <?php echo $productos[$j]['codigo']; ?></p></td>
 						</tr>
 						<tr class="table-producto-precio">
 							<td><p><span>$ <?php echo number_format ( $productos[$j]['precio'] , 0, ",", "." ); ?></span></p></td>

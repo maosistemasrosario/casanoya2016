@@ -76,7 +76,7 @@ class botonera extends Model{
         }
 		
 		function cargarProductosDestacados() {
-			$query = $this->db->query("select a.art_id, a.nombre, s.subcategoria, a.condicion , a.porcentaje, lp.precio, m.marca from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id inner join subcategorias as s on s.id_sub=a.subcatId inner join marcas as m on m.id = a.marcaId where a.destacado = 1 and a.activo=1 and l.isDefault=1 order by a.nombre");
+			$query = $this->db->query("select a.art_id, a.nombre, a.codigo, s.subcategoria, a.condicion , a.porcentaje, lp.precio, m.marca from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id inner join subcategorias as s on s.id_sub=a.subcatId inner join marcas as m on m.id = a.marcaId where a.destacado = 1 and a.activo=1 and l.isDefault=1 order by a.nombre");
 			$btn = array();
 			foreach($query->result() as $q=>$art){
 				$id = $art->art_id;
@@ -91,9 +91,9 @@ class botonera extends Model{
 				$query_img = $this->db->query("select big from img where artId = ".$id." order by img_id ASC limit 1");
 				$result = $query_img->result();
 				if (count($result)>0) {
-					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'condicion' => $condicion , 'marca' => $art->marca, 'imagen' => $result[0]->big);
+					$btn[] =array('nombre'=>$art->nombre,'codigo'=>$art->codigo,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'condicion' => $condicion , 'marca' => $art->marca, 'imagen' => $result[0]->big);
 				} else {
-					$btn[] =array('nombre'=>$art->nombre,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'condicion' => $condicion , 'marca' => $art->marca, 'imagen' => '');
+					$btn[] =array('nombre'=>$art->nombre,'codigo'=>$art->codigo,'id' => $id, 'subcategoria' => $art->subcategoria, 'precio' => $art->precio, 'condicion' => $condicion , 'marca' => $art->marca, 'imagen' => '');
 				}
 			}
 			return $btn;

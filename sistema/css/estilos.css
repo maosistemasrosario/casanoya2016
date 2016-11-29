@@ -722,5 +722,6 @@ footer address a {
     border-radius: 35px;
     position: absolute;
     margin-top: -10px;
-    right: 20px;
+    /*right: 20px;*/
+    left: 175px;
 }
