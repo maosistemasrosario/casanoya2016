@@ -81,22 +81,37 @@ class Application extends Controller{
 	}
 	
 	function show_subcat($id){
-			$query = $this->db->query("select m.marca, a.art_id, a.nombre, a.codigo, lp.precio from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where subcatId=$id and l.isDefault=1 order by a.nombre, a.codigo");
+			$query = $this->db->query("select m.marca, a.art_id, a.nombre, a.codigo from articulos as a left join marcas as m on m.id=a.marcaId where subcatId=$id order by m.marca, a.nombre, a.codigo");
 			$res = $query->result();
 			$cat = array();
 			if($res){
 				foreach($res as $resul){
+					$query2 = $this->db->query("select lp.precio from listas_precios as lp inner join listas as l on l.listas_id=lp.listas_id and l.isDefault=1 where lp.art_id=".$resul->art_id." limit 1");
+					$precio = $query2->result();
+					if(isset($precio[0]->precio)){
+						$precio = $precio[0]->precio;
+					}else{
+						$precio = 0;	
+					}
 					$cat[] = array(
 								'nombre' => $resul->nombre,
 								'id' => $resul->art_id,
 								'codigo' => $resul->codigo,
 								'marca' => $resul->marca,
-								'precio' => number_format($resul->precio, 0, ',', '.')
+								'precio' => number_format($precio, 0, ',', '.')
 							);
 				}
 			}
 			
 			echo json_encode($cat);
+	}
+
+	function delete_articulos($ids) {
+		$res = "";
+		foreach($ids as $resul){
+			$res = $res.$resul;
+		}
+		echo json_encode($res);
 	}
 	
 	function deleteImg($id){

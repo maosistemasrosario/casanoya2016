@@ -14,7 +14,7 @@ base_url = '<?= base_url();?>index.php/';
 //]]>
 </script>
 <script src="<?php echo base_url() ?>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>/js/listas.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/js/listas.js?date=20161129&v=1"></script>
 <script type="text/javascript">
 $(function(){
 	$('ul#btn li, #salir').hover(

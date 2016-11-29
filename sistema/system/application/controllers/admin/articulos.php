@@ -415,6 +415,7 @@ class Articulos extends controller{
 		$catId = $data['query']->result();
 		$data['categorias'] = $this->articulos_model->getCategoriasEdit($catId[0]->catId);
 		$data['subcategorias'] = $this->_getSubCategorias();
+		$data['subcategoria'] = $catId[0]->subcatId;
 		$subcatId = $data['query']->result();
 		$data['subcategoriasEdit'] = $this->articulos_model->getSubCategoriasEdit($subcatId[0]->subcatId);
 		$marcaId = $data['query']->result();

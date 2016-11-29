@@ -377,7 +377,16 @@ function selectCheck(){
 						$mar = "deLos - vetas";	
 					}
 					*/
-					echo "<option value='$row->id_sub'>$row->subcategoria </option>";	
+					if (isset($subcategoria)) {
+						if ($row->id_sub==$subcategoria) {
+							echo "<option value='$row->id_sub' selected='selected'>$row->subcategoria </option>";	
+						} else {
+							echo "<option value='$row->id_sub'>$row->subcategoria </option>";	
+						}
+					} else {
+						echo "<option value='$row->id_sub'>$row->subcategoria </option>";	
+					}
+					
 				}
             ?>
         </select>
@@ -389,6 +398,12 @@ function selectCheck(){
         <!--</ul>-->
         <table class="lista">
         </table>
+        <div class="button-bottom"></div>
+        <script type="text/javascript">
+        	$(document).ready(function() {
+        		listas_subcat($("#marcas").val());
+        	})
+        </script>
     </div>
 </div>
 </body>

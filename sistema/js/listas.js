@@ -135,11 +135,26 @@ function listas_subcat(id){
 function cargar_lista_subcat(data){
 	var lista = $("table.lista");
 	lista.html("");
-	$('<tr><th>MARCA</th><th>NOMBRE</th><th>CÓDIGO</th><th>PRECIO</th></tr>').appendTo(lista);
+	$('<tr><th>SEL.</th><th>MARCA</th><th>NOMBRE</th><th>CÓDIGO</th><th>PRECIO</th></tr>').appendTo(lista);
 	for(var i = 0; i<data.length; i++){
-		$("<tr><td>"+data[i].marca+"</td><td>"+data[i].nombre+"</td><td>"+data[i].codigo+"</td><td class='precio'>"+data[i].precio+"</td><td><div class='ui-state-default ui-corner-all editar'><a class='ui-icon ui-icon-trash' href='"+base_url+"admin/articulos/delete/"+data[i].id+"' onclick='return confirmar()'></a></div><div class='ui-state-default ui-corner-all editar'><a class='ui-icon ui-icon-pencil' href='"+base_url+"admin/articulos/edit/"+data[i].id+"'></a></div></td></tr>").appendTo(lista);	
+		$("<tr><td><input type='checkbox' value='"+data[i].id+"' name='selected'></td><td>"+data[i].marca+"</td><td>"+data[i].nombre+"</td><td>"+data[i].codigo+"</td><td class='precio'>"+data[i].precio+"</td><td><div class='ui-state-default ui-corner-all editar'><a class='ui-icon ui-icon-trash' href='"+base_url+"admin/articulos/delete/"+data[i].id+"' onclick='return confirmar()'></a></div><div class='ui-state-default ui-corner-all editar'><a class='ui-icon ui-icon-pencil' href='"+base_url+"admin/articulos/edit/"+data[i].id+"'></a></div></td></tr>").appendTo(lista);	
 	}
 	$("#resp").html('');
+	//$(".button-bottom").html("<input type='button' class='ui-state-default' onclick='borrarSel();' value='Borrar Sel.' />");
+}
+
+function borrarSel() {
+	var lista = $("table.lista");
+	var ids = "";
+	lista.find("tr").each(function() {
+		var check = $(this).find("input")[0];
+		if (check) {if(check.checked) {if (ids!="") {ids+="-"};ids+=check.value}}}
+	);
+	alert(ids);
+	$.getJSON(base_url+"admin/application/delete_articulos/"+ids);
+		$('#resp').ajaxStop(function() {
+		});
+	//
 }
 
 function deleteImg(id){
