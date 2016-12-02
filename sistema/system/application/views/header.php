@@ -19,8 +19,9 @@ base_url = '<?= base_url();?>';
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <!--<![endif]-->
-<script src="<?php echo base_url() ?>/js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo base_url() ?>/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>/js/bootstrap3-typeahead.min.js"></script>
 <script src="<?php echo base_url() ?>/js/responsiveslides.min.js"></script>
 <script src="<?php echo base_url() ?>/js/listas.js"></script>
 <script type="text/javascript">
@@ -101,6 +102,8 @@ $(function(){
 	$('#menu-nivel-1').mouseleave(function(){
 		abrirMenu();  
 	});
+	cargarBuscador();
+	//$('#txtBuscador').typeahead({ source:["item1","item2","item3"]});
 });
 </script>
 </head>

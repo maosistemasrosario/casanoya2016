@@ -107,6 +107,27 @@ class Application extends Controller{
 			echo json_encode($cat);
 	}
 
+	function show_all_articulos() {
+		$query = $this->db->query("select a.art_id, m.marca, CONCAT(a.nombre, ' ', a.codigo) as name from articulos as a left join marcas as m on m.id=a.marcaId where a.activo=1 and TRIM(IFNULL(a.nombre,'')) <> '' order by a.nombre, a.codigo");
+		$res = $query->result();
+		$art = array();
+		if($res){
+			foreach($res as $resul){
+				if ($resul->marca!='') {
+					$name = strtoupper($resul->marca).' '.strtoupper($resul->name);
+				} else {
+					$name = strtoupper($resul->name);
+				}
+				$art[] = array(
+								'id' => $resul->art_id,
+								'name' => $name//,
+								//'codigo' => $resul->codigo
+							);
+			}
+		}
+		echo json_encode($art);
+	}
+
 	function delete_articulos($ids) {
 		$ids_arr = explode("-",$ids);
 		foreach($ids_arr as $id){

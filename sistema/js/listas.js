@@ -123,6 +123,29 @@ function listas_subcat(id){
 	}
 }
 
+function cargarBuscador() {
+	$.getJSON(base_url+"index.php/admin/application/show_all_articulos", function(data) {
+		$('#txtBuscador').typeahead({ source:data});
+		//$('#txtBuscador').typeahead({ source:[{"id":"1096","name":"CELULAR NOKIA"},{"id":"1157","name":"COCINA"}]});
+		$('#txtBuscador').change(function() {
+		    var current = $('#txtBuscador').typeahead("getActive");
+		    if (current) {
+		        // Some item from your model is active!
+		        if (current.name == $('#txtBuscador').val()) {
+		        	console.log(current.id);
+		        	window.location.href = 'index.php/articulo/'+current.id+'/0';
+		            // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
+		        } else {
+		            // This means it is only a partial match, you can either add a new item 
+		            // or take the active if you don't want new items
+		        }
+		    } else {
+		        // Nothing is active so it is a new value (or maybe empty value)
+		    }
+		});
+	});
+}
+
 /*function cargar_lista_subcat(data){
 	var lista = $("ul.lista");
 	//lista.html("");

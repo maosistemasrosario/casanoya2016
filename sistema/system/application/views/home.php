@@ -26,6 +26,7 @@
 		</div>
 		<div id="menu-container">
 			<div id="menu"><a href="#"  onmouseover="abrirMenu();">CATEGORÍAS </a></div>
+			<input type="text" id="txtBuscador" placeholder="Busca el producto que deseas..." data-provide="typeahead">
 			<ul id="menu-nivel-1" ;>
 				<?php
 				for($i = 0; $i<count($categorias); $i++){
