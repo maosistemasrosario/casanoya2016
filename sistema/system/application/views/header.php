@@ -13,7 +13,7 @@ base_url = '<?= base_url();?>';
 
 //]]>
 </script>
-<link href="<?php echo base_url() ?>/css/estilos.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url() ?>/css/estilos.css?date=20161205" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url() ?>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url() ?>/css/responsiveslides.css" rel="stylesheet" type="text/css" />
 <!--[if lt IE 9]>
@@ -23,7 +23,7 @@ base_url = '<?= base_url();?>';
 <script src="<?php echo base_url() ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url() ?>/js/bootstrap3-typeahead.min.js"></script>
 <script src="<?php echo base_url() ?>/js/responsiveslides.min.js"></script>
-<script src="<?php echo base_url() ?>/js/listas.js"></script>
+<script src="<?php echo base_url() ?>/js/listas.js?date=20161205"></script>
 <script type="text/javascript">
 /*$(function(){
 	//$(".color").css('opacity', 0.8);	

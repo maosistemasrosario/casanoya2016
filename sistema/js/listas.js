@@ -133,7 +133,7 @@ function cargarBuscador() {
 		        // Some item from your model is active!
 		        if (current.name == $('#txtBuscador').val()) {
 		        	console.log(current.id);
-		        	window.location.href = 'index.php/articulo/'+current.id+'/0';
+		        	window.location.href = base_url+'index.php/articulo/'+current.id+'/0';
 		            // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
 		        } else {
 		            // This means it is only a partial match, you can either add a new item 
@@ -143,7 +143,13 @@ function cargarBuscador() {
 		        // Nothing is active so it is a new value (or maybe empty value)
 		    }
 		});
+		$('#txtBuscador').css('pointer-events','auto');
 	});
+}
+
+function buscarBuscador() {
+	$('#txtBuscador').focus();
+	$('#txtBuscador').typeahead('lookup');
 }
 
 /*function cargar_lista_subcat(data){

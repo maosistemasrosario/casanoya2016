@@ -108,7 +108,7 @@ class Application extends Controller{
 	}
 
 	function show_all_articulos() {
-		$query = $this->db->query("select a.art_id, m.marca, CONCAT(a.nombre, ' ', a.codigo) as name from articulos as a left join marcas as m on m.id=a.marcaId where a.activo=1 and TRIM(IFNULL(a.nombre,'')) <> '' order by a.nombre, a.codigo");
+		$query = $this->db->query("select a.art_id, m.marca, CONCAT(a.nombre, ' ', a.codigo) as name from articulos as a left join listas_precios as lp on lp.art_id=a.art_id left join listas as l on l.listas_id=lp.listas_id left join marcas as m on m.id=a.marcaId where a.activo=1 and l.isDefault=1 and TRIM(IFNULL(a.nombre,'')) <> '' order by a.nombre, a.codigo");
 		$res = $query->result();
 		$art = array();
 		if($res){

@@ -154,12 +154,30 @@ header:before
 }
 #txtBuscador
 {
-	margin-right: 10%;
+	/*margin-right: 10%;*/
     float: right;
     width: 30%;
     margin-top:2px;
     padding-left: 5px;
-    height: 25px;
+    height: 28px;
+    margin-top: 1px;
+    pointer-events: none;
+}
+#btnBuscador
+{
+	float: right;
+	margin-right: 10%;
+	margin-top: 1px;
+	width: 36px;
+    height: 28px;
+    background: url(../images/icon-search.png) center center no-repeat rgba(207,7,4,0.9);
+    border:none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+    cursor: pointer;
 }
 .typeahead
 {
